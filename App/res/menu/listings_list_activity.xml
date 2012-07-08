@@ -1,0 +1,20 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/menu_search"
+        android:actionLayout="@layout/search_actionview"
+        android:icon="@drawable/ic_action_search"
+        android:showAsAction="ifRoom|withText|collapseActionView"
+        android:title="@string/menu_search"/>
+	<item
+        android:id="@+id/menu_map_listings"
+        android:icon="@drawable/ic_map_listings"
+        android:showAsAction="ifRoom|withText"
+        android:title="@string/menu_map_listings"/>
+    <item
+        android:id="@+id/menu_settings"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="@string/menu_settings"/>
+
+</menu>

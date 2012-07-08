@@ -1,0 +1,16 @@
+<resources>
+
+    <string name="app_name">Aggregator</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_listings_list">Aggregator</string>
+    <string name="menu_search">Search</string>
+    <string name="menu_map_listings">Map Listings</string>
+    <string name="average_price">Average Price</string>
+    <string name="authority">uwaterloo.fydp.aggregator.ListingsContentProvider</string>
+    <string name="no_listings_message">No listings found!</string>
+    <string name="previous">Previous</string>
+    <string name="next">Next</string>
+    <string name="search_for_listings">Search for listings</string>
+
+</resources>
