@@ -1,10 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<EditText xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/searchEditText"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/searchActionView"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:hint="@string/search_for_listings"
-    android:inputType="text"
-    android:imeOptions="actionSearch" >
+    android:layout_height="match_parent" >
 
-</EditText>
+    <EditText
+        android:id="@+id/searchEditText"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="5"
+        android:hint="@string/search_for_listings"
+        android:imeActionLabel="test"
+        android:imeOptions="actionSearch"
+        android:inputType="text" />
+
+    <ImageButton
+        android:id="@+id/searchButton"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:background="@null"
+        android:contentDescription="@string/search_for_listings"
+        android:src="@drawable/ic_action_search" />
+
+</LinearLayout>

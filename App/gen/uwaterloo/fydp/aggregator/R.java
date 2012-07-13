@@ -22,18 +22,21 @@ public final class R {
         public static final int star_on=0x7f020003;
     }
     public static final class id {
-        public static final int averagePrice=0x7f080003;
-        public static final int averagePriceLabel=0x7f080002;
-        public static final int listing_description=0x7f080005;
-        public static final int listing_price=0x7f080006;
-        public static final int listing_title=0x7f080004;
-        public static final int listingsNextButton=0x7f080001;
-        public static final int listingsPrevButton=0x7f080000;
-        public static final int mapView=0x7f080007;
-        public static final int menu_map_listings=0x7f080009;
-        public static final int menu_search=0x7f08000a;
-        public static final int menu_settings=0x7f08000b;
-        public static final int searchEditText=0x7f080008;
+        public static final int averagePrice=0x7f060004;
+        public static final int averagePriceLabel=0x7f060003;
+        public static final int listing_description=0x7f060006;
+        public static final int listing_price=0x7f060007;
+        public static final int listing_title=0x7f060005;
+        public static final int listingsNextButton=0x7f060002;
+        public static final int listingsPrevButton=0x7f060001;
+        public static final int mapView=0x7f060008;
+        public static final int menu_map_listings=0x7f06000d;
+        public static final int menu_search=0x7f06000c;
+        public static final int menu_settings=0x7f06000e;
+        public static final int searchActionView=0x7f060009;
+        public static final int searchButton=0x7f06000b;
+        public static final int searchEditText=0x7f06000a;
+        public static final int tag_url=0x7f060000;
     }
     public static final class layout {
         public static final int listings_footer=0x7f030000;
@@ -44,23 +47,20 @@ public final class R {
         public static final int search_actionview=0x7f030005;
     }
     public static final class menu {
-        public static final int listings_list_activity=0x7f070000;
+        public static final int listings_list_activity=0x7f080000;
     }
     public static final class string {
         public static final int app_name=0x7f050000;
-        public static final int authority=0x7f050007;
-        public static final int average_price=0x7f050006;
-        public static final int hello_world=0x7f050001;
-        public static final int menu_map_listings=0x7f050005;
-        public static final int menu_search=0x7f050004;
-        public static final int menu_settings=0x7f050002;
-        public static final int next=0x7f05000a;
-        public static final int no_listings_message=0x7f050008;
-        public static final int previous=0x7f050009;
-        public static final int search_for_listings=0x7f05000b;
-        public static final int title_activity_listings_list=0x7f050003;
+        public static final int average_price=0x7f050004;
+        public static final int menu_map_listings=0x7f050003;
+        public static final int menu_search=0x7f050002;
+        public static final int menu_settings=0x7f050001;
+        public static final int next=0x7f050007;
+        public static final int no_listings_message=0x7f050005;
+        public static final int previous=0x7f050006;
+        public static final int search_for_listings=0x7f050008;
     }
     public static final class style {
-        public static final int AppTheme=0x7f060000;
+        public static final int AppTheme=0x7f070000;
     }
 }

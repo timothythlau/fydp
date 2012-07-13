@@ -74,8 +74,9 @@ public class ListingsMapActivity extends MapActivity {
 		case android.R.id.home:
 			// Return to list activity
 			Intent intent = new Intent(this, ListingsListActivity.class);
-			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
 			startActivity(intent);
+			finish();
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);

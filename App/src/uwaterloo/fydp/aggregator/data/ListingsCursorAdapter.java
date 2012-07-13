@@ -12,11 +12,12 @@ import android.view.ViewGroup;
 import android.widget.CursorAdapter;
 import android.widget.TextView;
 
-public class ListingsCursorAdapter extends CursorAdapter {
+public class ListingsCursorAdapter extends CursorAdapter {	
 	private LayoutInflater inflater;
-	private int titleColumnIndex;
-	private int descriptionColumnIndex;
-	private int priceColumnIndex;
+	private int mTitleColumnIndex;
+	private int mDescriptionColumnIndex;
+	private int mPriceColumnIndex;
+	private int mUrlColumnIndex;
 
 	static class ViewHolder {
 		public TextView title;
@@ -36,14 +37,8 @@ public class ListingsCursorAdapter extends CursorAdapter {
 		super(context, cursor, 0);
 		this.inflater = LayoutInflater.from(context);
 
-		if (cursor != null) {
-			this.titleColumnIndex = cursor
-					.getColumnIndexOrThrow(ListingsTable.KEY_TITLE);
-			this.descriptionColumnIndex = cursor
-					.getColumnIndexOrThrow(ListingsTable.KEY_DESCRIPTION);
-			this.priceColumnIndex = cursor
-					.getColumnIndexOrThrow(ListingsTable.KEY_PRICE);
-		}
+		if (cursor != null)
+			getColumnIndicies(cursor);
 	}
 
 	/**
@@ -52,12 +47,15 @@ public class ListingsCursorAdapter extends CursorAdapter {
 	@Override
 	public void bindView(View view, Context context, Cursor cursor) {
 		ViewHolder vh = (ViewHolder) view.getTag();
-		vh.title.setText(cursor.getString(titleColumnIndex));
-		vh.description.setText(cursor.getString(descriptionColumnIndex));
+		vh.title.setText(cursor.getString(mTitleColumnIndex));
+		vh.description.setText(cursor.getString(mDescriptionColumnIndex));
 
 		String pattern = "'$'#,##0.00";
 		NumberFormat numberFormat = new DecimalFormat(pattern);
-		vh.price.setText(numberFormat.format(cursor.getDouble(priceColumnIndex)));
+		vh.price.setText(numberFormat.format(cursor
+				.getDouble(mPriceColumnIndex)));
+		
+		view.setTag(R.id.tag_url, cursor.getString(mUrlColumnIndex));
 	}
 
 	/**
@@ -83,15 +81,25 @@ public class ListingsCursorAdapter extends CursorAdapter {
 	 */
 	@Override
 	public Cursor swapCursor(Cursor newCursor) {
-		if (newCursor != null) {
-			this.titleColumnIndex = newCursor
-					.getColumnIndexOrThrow(ListingsTable.KEY_TITLE);
-			this.descriptionColumnIndex = newCursor
-					.getColumnIndexOrThrow(ListingsTable.KEY_DESCRIPTION);
-			this.priceColumnIndex = newCursor
-					.getColumnIndexOrThrow(ListingsTable.KEY_PRICE);
-		}
+		if (newCursor != null)
+			getColumnIndicies(newCursor);
 
 		return super.swapCursor(newCursor);
+	}
+
+	/**
+	 * Stores the column indices of the necessary columns for performance.
+	 * 
+	 * @param cursor
+	 *            The cursor pointing to the listings table data.
+	 */
+	private void getColumnIndicies(Cursor cursor) {
+		mTitleColumnIndex = cursor
+				.getColumnIndexOrThrow(ListingsTable.KEY_TITLE);
+		mDescriptionColumnIndex = cursor
+				.getColumnIndexOrThrow(ListingsTable.KEY_DESCRIPTION);
+		mPriceColumnIndex = cursor
+				.getColumnIndexOrThrow(ListingsTable.KEY_PRICE);
+		mUrlColumnIndex = cursor.getColumnIndexOrThrow(ListingsTable.KEY_URL);
 	}
 }

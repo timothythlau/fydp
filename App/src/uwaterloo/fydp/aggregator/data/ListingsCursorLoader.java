@@ -50,7 +50,6 @@ public class ListingsCursorLoader extends AsyncTaskLoader<Cursor> {
 			cursor.registerContentObserver(mObserver);
 		}
 
-		listingsTable.close();
 		return cursor;
 	}
 

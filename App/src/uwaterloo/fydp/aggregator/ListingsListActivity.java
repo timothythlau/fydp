@@ -14,38 +14,68 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MenuItem.OnActionExpandListener;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnFocusChangeListener;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.CursorAdapter;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 
 public class ListingsListActivity extends ListActivity implements
 		LoaderManager.LoaderCallbacks<Cursor> {
 	private static final int LISTINGS_LIST_LOADER = 0x01;
+	
 	private CursorAdapter mAdapter;
 	private Menu mOptionsMenu;
+	private String mLastSearchPhrase = "";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.listings_list_activity);
+		
+		//populateDummyData();
 
-		View footer = getLayoutInflater().inflate(R.layout.listings_footer,
-				null);
-		getListView().addFooterView(footer);
+//		View footer = getLayoutInflater().inflate(R.layout.listings_footer, null);
+//		getListView().addFooterView(footer);
 
 		// Create empty adapter which will be used by the ListingsCursorLoader
 		mAdapter = new ListingsCursorAdapter(this, null);
 		setListAdapter(mAdapter);
+		getListView().setOnItemClickListener(listViewItemClickListener);
 
 		// Prepare the loader
 		getLoaderManager().initLoader(LISTINGS_LIST_LOADER, null, this);
 	}
+	
+	/**
+	 * Handle list view item clicks.
+	 */
+	private OnItemClickListener listViewItemClickListener = new OnItemClickListener() {
+		@Override
+		public void onItemClick(AdapterView<?> parent, View view, int position,
+				long id) {
+			String url = (String) view.getTag(R.id.tag_url);
+			if (!url.startsWith("http://") && !url.startsWith("https://"))
+				url = "http://" + url;
+			
+			Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+			startActivity(browserIntent);
+		}
+	};
 
 	/**
 	 * Create options menu.
@@ -55,44 +85,92 @@ public class ListingsListActivity extends ListActivity implements
 		mOptionsMenu = menu;
 		getMenuInflater().inflate(R.menu.listings_list_activity, menu);
 		MenuItem searchMenuItem = menu.findItem(R.id.menu_search);
-		final EditText searchEditText = (EditText) searchMenuItem
-				.getActionView();
+		final View actionView = searchMenuItem.getActionView();
+		final EditText searchEditText = (EditText) actionView.findViewById(R.id.searchEditText);
+		final ImageButton searchButton = (ImageButton) actionView.findViewById(R.id.searchButton);
 		
-		// Hide keyboard when search field loses focus
-		searchEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {			
-			@Override
-			public void onFocusChange(View view, boolean hasFocus) {
-				if (!hasFocus) {
-					InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-					imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-				}
-			}
-		});
-
 		// Listener for when the action view expands/collapses
-		searchMenuItem.setOnActionExpandListener(new OnActionExpandListener() {
-			@Override
-			public boolean onMenuItemActionExpand(MenuItem item) {
-				// Set focus to search field and show keyboard
-				searchEditText.post(new Runnable() {					
-					@Override
-					public void run() {
-						searchEditText.requestFocus();
-						InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-						imm.showSoftInput(searchEditText, InputMethodManager.SHOW_IMPLICIT);
-					}
-				});
-				return true;
-			}
-
-			@Override
-			public boolean onMenuItemActionCollapse(MenuItem item) {
-				return true;
-			}
-		});
+		searchMenuItem.setOnActionExpandListener(searchMenuActionExpandListener);	
+		// Hide keyboard when search field loses focus
+		searchEditText.setOnFocusChangeListener(searchEditTextFocusChangeListener);
+		// Execute query on action button press from soft keyboard
+		searchEditText.setOnEditorActionListener(searchEditorActionListener);
+		// Handle search button press
+		searchButton.setOnClickListener(searchButtonClickListener);
 
 		return super.onCreateOptionsMenu(menu);
 	}
+	
+	/**
+	 * Handle IME action button press from soft keyboard for search field.
+	 */
+	private OnEditorActionListener searchEditorActionListener = new OnEditorActionListener() {		
+		@Override
+		public boolean onEditorAction(TextView view, int actionId, KeyEvent event) {
+			if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+				Log.i(this.getClass().getName(), "IME search action pressed");
+				submitQuery(view.getText().toString());
+			}
+			return false;
+		}
+	};
+	
+	/**
+	 * Handle search button clicks.
+	 */
+	private OnClickListener searchButtonClickListener = new OnClickListener() {		
+		@Override
+		public void onClick(View view) {
+			Log.i(this.getClass().getName(), "Search button was clicked");
+			view.requestFocusFromTouch();
+			EditText searchEditText = (EditText) findViewById(R.id.searchEditText);
+			submitQuery(searchEditText.getText().toString());
+		}
+	};
+	
+	/**
+	 * Handle search field focus changes.
+	 */
+	private OnFocusChangeListener searchEditTextFocusChangeListener = new OnFocusChangeListener() {		
+		@Override
+		public void onFocusChange(View view, boolean hasFocus) {
+			InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+			if (hasFocus)
+				imm.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT);
+			else
+				imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+		}
+	};
+	
+	/**
+	 * Handle the expanding/collapsing of the search action item. Shows/hides soft keyboard.
+	 */
+	private OnActionExpandListener searchMenuActionExpandListener = new OnActionExpandListener() {
+		@Override
+		public boolean onMenuItemActionExpand(MenuItem item) {
+			// Set focus to search field and show soft keyboard
+			final EditText searchEditText = (EditText) item.getActionView().findViewById(R.id.searchEditText);
+			
+			searchEditText.post(new Runnable() {
+				@Override
+				public void run() {
+					searchEditText.requestFocus();
+					InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+					imm.showSoftInput(searchEditText, InputMethodManager.SHOW_IMPLICIT);
+				}
+			});
+			return true;
+		}
+
+		@Override
+		public boolean onMenuItemActionCollapse(MenuItem item) {
+			// Hide soft keyboard
+			final EditText searchEditText = (EditText) item.getActionView().findViewById(R.id.searchEditText);
+			InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+			imm.hideSoftInputFromWindow(searchEditText.getWindowToken(), 0);
+			return true;
+		}
+	};
 
 	/**
 	 * Handle options menu item selection.
@@ -150,25 +228,41 @@ public class ListingsListActivity extends ListActivity implements
 	public void onLoaderReset(Loader<Cursor> loader) {
 		mAdapter.swapCursor(null);
 	}
+	
+	/**
+	 * Submit the query to the query engine
+	 * @param searchPhrase The user entered search phrase.
+	 */
+	private void submitQuery(String searchPhrase) {
+		// Check for empty or duplicated search phrase
+		if (searchPhrase.isEmpty() || searchPhrase.compareToIgnoreCase(mLastSearchPhrase) == 0) {
+			// TODO: Show toast
+			return;
+		}
+		
+		Query query = new Query(this, searchPhrase, 0, 123.123, 321.321, 5);
+		query.submit();
+		mLastSearchPhrase = searchPhrase;
+		Log.i(this.getClass().getName(), "submitQuery()");
+	}
 
 	/**
 	 * Testing method. TODO: Delete.
 	 */
 	@SuppressWarnings("unused")
 	private void populateDummyData() {
-		ListingsTable lt = ListingsTable.getInstance(this);
+		ListingsTable lt = ListingsTable.getInstance(getApplicationContext());
 		lt.open();
-		lt.insertListing("Possible Craigslist listing", "This is a listing",
-				"Apple", 1600.00, "abc", 123.123, 123.123);
-		lt.insertListing("Kijiji Listing", "Description goes here!", "Apple",
-				199.99, "abc", 123.123, 123.123);
-		lt.insertListing("Another Title", "Another test description2", "Apple",
-				1623.10, "abc", 123.123, 123.123);
-		lt.insertListing("Another another title", "Another test description2",
-				"Apple", 1.10, "abc", 123.123, 123.123);
-		lt.insertListing("Another another another title",
-				"Another test description2", "Apple", 3.15, "abc", 123.123,
+		lt.insert("Possible Craigslist listing", "This is a listing",
+				"Apple", 1600.00, "http://www.google.com/", 123.123, 123.123);
+		lt.insert("Kijiji Listing", "Description goes here!", "Apple",
+				199.99, "www.google.com", 123.123, 123.123);
+		lt.insert("Another Title", "Another test description2", "Apple",
+				1623.10, "http://craigslist.com", 123.123, 123.123);
+		lt.insert("Another another title", "Another test description2",
+				"Apple", 1.10, "http://kijiji.com", 123.123, 123.123);
+		lt.insert("Another another another title",
+				"Another test description2", "Apple", 3.15, "www.yahoo.ca", 123.123,
 				123.123);
-		lt.close();
 	}
 }

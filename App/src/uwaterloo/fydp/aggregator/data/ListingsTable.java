@@ -5,10 +5,14 @@
 
 package uwaterloo.fydp.aggregator.data;
 
+import java.util.List;
+
+import uwaterloo.fydp.aggregator.Listing;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
+import android.database.DatabaseUtils.InsertHelper;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
@@ -31,9 +35,9 @@ public class ListingsTable {
 			+ KEY_LONGITUDE + " REAL NULL);";
 
 	private static ListingsTable instance = null;
-	private Context context;
-	private ListingsDatabaseHelper databaseHelper;
-	private SQLiteDatabase database;
+	private Context mContext;
+	private ListingsDatabaseHelper mDatabaseHelper;
+	private SQLiteDatabase mDatabase;
 
 	public static void onCreate(SQLiteDatabase database) {
 		database.execSQL(LISTINGS_TABLE_CREATE);
@@ -55,7 +59,7 @@ public class ListingsTable {
 	 *            Android context
 	 */
 	private ListingsTable(Context context) {
-		this.context = context;
+		this.mContext = context.getApplicationContext();
 	}
 
 	/**
@@ -85,8 +89,11 @@ public class ListingsTable {
 	 *             if the database could be neither opened or created
 	 */
 	public ListingsTable open() throws SQLException {
-		databaseHelper = new ListingsDatabaseHelper(context);
-		database = databaseHelper.getWritableDatabase();
+		if (mDatabaseHelper == null) {
+			mDatabaseHelper = new ListingsDatabaseHelper(mContext);
+			mDatabase = mDatabaseHelper.getWritableDatabase();
+		}
+		
 		return this;
 	}
 
@@ -94,7 +101,8 @@ public class ListingsTable {
 	 * Close database.
 	 */
 	public void close() {
-		databaseHelper.close();
+		if (mDatabaseHelper != null)
+			mDatabaseHelper.close();
 	}
 
 	/**
@@ -110,7 +118,7 @@ public class ListingsTable {
 	 *            The price of the listing.
 	 * @return rowId or -1 on failure.
 	 */
-	public long insertListing(String title, String description,
+	public long insert(String title, String description,
 			String category, double price, String url, double latitude,
 			double longitude) {
 		ContentValues values = new ContentValues();
@@ -122,7 +130,41 @@ public class ListingsTable {
 		values.put(KEY_LATITUDE, latitude);
 		values.put(KEY_LONGITUDE, longitude);
 
-		return database.insert(LISTINGS_TABLE_NAME, null, values);
+		return mDatabase.insert(LISTINGS_TABLE_NAME, null, values);
+	}
+	
+	/**
+	 * Inserts the listings in the given list into the database.
+	 * @param listings A List of Listing objects to be inserted. 
+	 */
+	public void insert(List<Listing> listings) {
+		InsertHelper ih = new InsertHelper(mDatabase, LISTINGS_TABLE_NAME);
+		final int titleColumnIndex = ih.getColumnIndex(KEY_TITLE);
+		final int descriptionColumnIndex = ih.getColumnIndex(KEY_DESCRIPTION);
+		final int categoryColumnIndex = ih.getColumnIndex(KEY_CATEGORY);
+		final int priceColumnIndex = ih.getColumnIndex(KEY_PRICE);
+		final int urlColumnIndex = ih.getColumnIndex(KEY_URL);
+		final int latitudeColumnIndex = ih.getColumnIndex(KEY_LATITUDE);
+		final int longitudeColumnIndex = ih.getColumnIndex(KEY_LONGITUDE);
+		
+		try {
+			for (Listing listing : listings) {
+				ih.prepareForInsert();
+				
+				// Bind data to columns
+				ih.bind(titleColumnIndex, listing.getTitle());
+				ih.bind(descriptionColumnIndex, listing.getFullDescription());
+				ih.bind(categoryColumnIndex, listing.getCategory());
+				ih.bind(priceColumnIndex, listing.getPrice());
+				ih.bind(urlColumnIndex, listing.getUrl());
+				ih.bind(latitudeColumnIndex, listing.getLatitude());
+				ih.bind(longitudeColumnIndex, listing.getLongitude());
+				
+				ih.execute();
+			}
+		} finally {
+			ih.close();
+		}
 	}
 
 	/**
@@ -133,7 +175,7 @@ public class ListingsTable {
 	 * @return True if a row was deleted.
 	 */
 	public boolean deleteListing(long rowId) {
-		return database.delete(LISTINGS_TABLE_NAME, KEY_ROW_ID + " = " + rowId,
+		return mDatabase.delete(LISTINGS_TABLE_NAME, KEY_ROW_ID + " = " + rowId,
 				null) > 0;
 	}
 
@@ -142,8 +184,8 @@ public class ListingsTable {
 	 * 
 	 * @return The number of rows deleted.
 	 */
-	public int deleteAllListings() {
-		return database.delete(LISTINGS_TABLE_CREATE, "1", null);
+	public int deleteAll() {
+		return mDatabase.delete(LISTINGS_TABLE_NAME, "1", null);
 	}
 
 	/**
@@ -157,7 +199,7 @@ public class ListingsTable {
 	 * @return A Cursor pointing to the rows returned by the query.
 	 */
 	public Cursor getListings(int numberOfListings, int offset) {
-		return database.query(LISTINGS_TABLE_NAME, new String[] { KEY_ROW_ID,
+		return mDatabase.query(LISTINGS_TABLE_NAME, new String[] { KEY_ROW_ID,
 				KEY_TITLE, KEY_DESCRIPTION, KEY_CATEGORY, KEY_PRICE, KEY_URL,
 				KEY_LATITUDE, KEY_LONGITUDE }, null, null, null, null, null,
 				numberOfListings + ", " + offset);
@@ -169,7 +211,7 @@ public class ListingsTable {
 	 * @return A Cursor pointing to the the returned data set.
 	 */
 	public Cursor getListings() {
-		return database.query(LISTINGS_TABLE_NAME, new String[] { KEY_ROW_ID,
+		return mDatabase.query(LISTINGS_TABLE_NAME, new String[] { KEY_ROW_ID,
 				KEY_TITLE, KEY_DESCRIPTION, KEY_CATEGORY, KEY_PRICE, KEY_URL,
 				KEY_LATITUDE, KEY_LONGITUDE }, null, null, null, null, null,
 				null);
