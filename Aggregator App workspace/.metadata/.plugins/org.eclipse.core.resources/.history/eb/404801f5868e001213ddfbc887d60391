@@ -123,6 +123,7 @@ public class ListingsMapActivityNew extends FragmentActivity
 	protected void onResume() {
 		super.onResume();
 		myLocation.activate(myLocation.listener);
+		
 	}
 
 	@Override

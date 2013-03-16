@@ -1,7 +1,8 @@
 package uwaterloo.fydp.aggregator;
 
+import java.net.MalformedURLException;
 import java.net.URI;
-import java.net.URISyntaxException;
+import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.regex.Matcher;
@@ -36,6 +37,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ListingsMapActivityNew extends FragmentActivity 
 	implements OnCameraChangeListener, OnInfoWindowClickListener {
@@ -116,13 +118,13 @@ public class ListingsMapActivityNew extends FragmentActivity
 
 		//get handle on maps fragment
 		setUpMapIfNeeded();
-		processMarkers();
 	}
 
 	@Override
 	protected void onResume() {
 		super.onResume();
 		myLocation.activate(myLocation.listener);
+		processMarkers();
 	}
 
 	@Override
@@ -180,7 +182,7 @@ public class ListingsMapActivityNew extends FragmentActivity
 
 		//clear map first and re-init url hash table
 		mMap.clear();
-		hashUri = new HashMap<Marker, URI>();
+		hashUrl = new HashMap<Marker, URL>();
 
 		//get listings db and cursor
 		ListingsTable lt = ListingsTable.getInstance(getApplicationContext());
@@ -205,14 +207,14 @@ public class ListingsMapActivityNew extends FragmentActivity
 				
 				try {
 					hashUri.put(marker, new URI(mUrl));
-				} catch (URISyntaxException e) {
+				} catch (MalformedURLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 					hashUri.remove(marker);
 					marker.remove();
 				}
 			}
-			
+
 			mCursor.moveToNext();
 		}
 	}
@@ -248,8 +250,7 @@ public class ListingsMapActivityNew extends FragmentActivity
 		// TODO Auto-generated method stub
 		//Toast.makeText(getApplicationContext(), hashUrl.get(marker).toString(), Toast.LENGTH_LONG).show();
 		
-		Intent browserIntent = new Intent(Intent.ACTION_VIEW);
-		browserIntent.setData(Uri.parse(hashUri.get(marker).toString()));
+		Intent browserIntent = new Intent(Intent.ACTION_VIEW, hashUri.get(marker));
 		startActivity(browserIntent);
 	}
 }

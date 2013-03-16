@@ -1,9 +1,6 @@
 package uwaterloo.fydp.aggregator;
 
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.text.DecimalFormat;
-import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -14,7 +11,6 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.InfoWindowAdapter;
 import com.google.android.gms.maps.GoogleMap.OnCameraChangeListener;
-import com.google.android.gms.maps.GoogleMap.OnInfoWindowClickListener;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
@@ -25,7 +21,6 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.text.SpannableString;
@@ -37,8 +32,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-public class ListingsMapActivityNew extends FragmentActivity 
-	implements OnCameraChangeListener, OnInfoWindowClickListener {
+public class ListingsMapActivityNew extends FragmentActivity implements OnCameraChangeListener {
 
 	class CustomInfoWindowAdapter implements InfoWindowAdapter {
 		//private final View mWindow;
@@ -103,7 +97,6 @@ public class ListingsMapActivityNew extends FragmentActivity
 	private GoogleMap mMap;
 	private MyLocation myLocation;
 	private float prevZoom;
-	private HashMap<Marker, URI> hashUri;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -116,13 +109,13 @@ public class ListingsMapActivityNew extends FragmentActivity
 
 		//get handle on maps fragment
 		setUpMapIfNeeded();
-		processMarkers();
 	}
 
 	@Override
 	protected void onResume() {
 		super.onResume();
 		myLocation.activate(myLocation.listener);
+		processMarkers();
 	}
 
 	@Override
@@ -159,9 +152,8 @@ public class ListingsMapActivityNew extends FragmentActivity
 				mMap.setLocationSource(myLocation);
 				mMap.setMyLocationEnabled(true);
 				
-				//set custom marker infowindow and infowindowclicklistener
+				//set custom marker infowindow
 				mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter());
-				mMap.setOnInfoWindowClickListener(this);
 			}
 			
 		}
@@ -174,48 +166,6 @@ public class ListingsMapActivityNew extends FragmentActivity
 
 		processMarkers();
 	}*/
-	
-	private void processMarkers() {
-		DecimalFormat df = new DecimalFormat("#0.00");
-
-		//clear map first and re-init url hash table
-		mMap.clear();
-		hashUri = new HashMap<Marker, URI>();
-
-		//get listings db and cursor
-		ListingsTable lt = ListingsTable.getInstance(getApplicationContext());
-		Cursor mCursor = lt.getListings();
-		mCursor.moveToFirst();
-
-		//traverse listings db and add marker for all listings
-		while (!mCursor.isAfterLast()) {
-			String mTitle = mCursor.getString(mCursor.getColumnIndex(ListingsTable.KEY_TITLE));
-			String mDesc = mCursor.getString(mCursor.getColumnIndex(ListingsTable.KEY_DESCRIPTION))
-					.replaceAll("(&nbsp;)", "");
-			double mPrice = mCursor.getDouble(mCursor.getColumnIndex(ListingsTable.KEY_PRICE));
-			String mUrl = mCursor.getString(mCursor.getColumnIndex(ListingsTable.KEY_URL));
-			//			String mTitle = mCursor.getString(1);
-			//			String mDesc = mCursor.getString(2);
-			Double mLat = mCursor.getDouble(mCursor.getColumnIndex(ListingsTable.KEY_LATITUDE));
-			Double mLng = mCursor.getDouble(mCursor.getColumnIndex(ListingsTable.KEY_LONGITUDE));
-
-			if (mLat != null || mLng != null) {
-				Marker marker = mMap.addMarker(new MarkerOptions().position(new LatLng(mLat,mLng))
-						.title(mTitle).snippet("$" + df.format(mPrice)+ "\n" + mDesc));
-				
-				try {
-					hashUri.put(marker, new URI(mUrl));
-				} catch (URISyntaxException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-					hashUri.remove(marker);
-					marker.remove();
-				}
-			}
-			
-			mCursor.moveToNext();
-		}
-	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -237,20 +187,42 @@ public class ListingsMapActivityNew extends FragmentActivity
 		return super.onOptionsItemSelected(item);
 	}
 
+	private void processMarkers() {
+		DecimalFormat df = new DecimalFormat("#0.00");
+
+		//clear map first
+		mMap.clear();
+
+		//get listings db and cursor
+		ListingsTable lt = ListingsTable.getInstance(getApplicationContext());
+		Cursor mCursor = lt.getListings();
+		mCursor.moveToFirst();
+
+		//traverse listings db and add marker for all listings
+		while (!mCursor.isAfterLast()) {
+			String mTitle = mCursor.getString(mCursor.getColumnIndex(ListingsTable.KEY_TITLE));
+			String mDesc = mCursor.getString(mCursor.getColumnIndex(ListingsTable.KEY_DESCRIPTION))
+					.replaceAll("(&nbsp;)", "");
+			double mPrice = mCursor.getDouble(mCursor.getColumnIndex(ListingsTable.KEY_PRICE));
+			String mUrl = mCursor.getString(mCursor.getColumnIndex(ListingsTable.KEY_URL));
+			//			String mTitle = mCursor.getString(1);
+			//			String mDesc = mCursor.getString(2);
+			Double mLat = mCursor.getDouble(mCursor.getColumnIndex(ListingsTable.KEY_LATITUDE));
+			Double mLng = mCursor.getDouble(mCursor.getColumnIndex(ListingsTable.KEY_LONGITUDE));
+
+			if (mLat != null || mLng != null) {
+				mMap.addMarker(new MarkerOptions().position(new LatLng(mLat,mLng))
+						.title(mTitle).snippet("$" + df.format(mPrice)+ "\n" + mDesc));
+			}
+
+			mCursor.moveToNext();
+		}
+	}
+
 	@Override
 	public void onCameraChange(CameraPosition position) {
 		// TODO Auto-generated method stub
 		prevZoom = position.zoom;
-	}
-
-	@Override
-	public void onInfoWindowClick(Marker marker) {
-		// TODO Auto-generated method stub
-		//Toast.makeText(getApplicationContext(), hashUrl.get(marker).toString(), Toast.LENGTH_LONG).show();
-		
-		Intent browserIntent = new Intent(Intent.ACTION_VIEW);
-		browserIntent.setData(Uri.parse(hashUri.get(marker).toString()));
-		startActivity(browserIntent);
 	}
 }
 

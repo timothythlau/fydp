@@ -1,7 +1,7 @@
 package uwaterloo.fydp.aggregator;
 
-import java.net.URI;
-import java.net.URISyntaxException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.regex.Matcher;
@@ -25,7 +25,6 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.text.SpannableString;
@@ -36,6 +35,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ListingsMapActivityNew extends FragmentActivity 
 	implements OnCameraChangeListener, OnInfoWindowClickListener {
@@ -103,7 +103,7 @@ public class ListingsMapActivityNew extends FragmentActivity
 	private GoogleMap mMap;
 	private MyLocation myLocation;
 	private float prevZoom;
-	private HashMap<Marker, URI> hashUri;
+	private HashMap<Marker, URL> hashUrl;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -116,13 +116,13 @@ public class ListingsMapActivityNew extends FragmentActivity
 
 		//get handle on maps fragment
 		setUpMapIfNeeded();
-		processMarkers();
 	}
 
 	@Override
 	protected void onResume() {
 		super.onResume();
 		myLocation.activate(myLocation.listener);
+		processMarkers();
 	}
 
 	@Override
@@ -180,7 +180,7 @@ public class ListingsMapActivityNew extends FragmentActivity
 
 		//clear map first and re-init url hash table
 		mMap.clear();
-		hashUri = new HashMap<Marker, URI>();
+		hashUrl = new HashMap<Marker, URL>();
 
 		//get listings db and cursor
 		ListingsTable lt = ListingsTable.getInstance(getApplicationContext());
@@ -204,15 +204,15 @@ public class ListingsMapActivityNew extends FragmentActivity
 						.title(mTitle).snippet("$" + df.format(mPrice)+ "\n" + mDesc));
 				
 				try {
-					hashUri.put(marker, new URI(mUrl));
-				} catch (URISyntaxException e) {
+					hashUrl.put(marker, new URL(mUrl));
+				} catch (MalformedURLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-					hashUri.remove(marker);
+					hashUrl.remove(marker);
 					marker.remove();
 				}
 			}
-			
+
 			mCursor.moveToNext();
 		}
 	}
@@ -246,11 +246,7 @@ public class ListingsMapActivityNew extends FragmentActivity
 	@Override
 	public void onInfoWindowClick(Marker marker) {
 		// TODO Auto-generated method stub
-		//Toast.makeText(getApplicationContext(), hashUrl.get(marker).toString(), Toast.LENGTH_LONG).show();
-		
-		Intent browserIntent = new Intent(Intent.ACTION_VIEW);
-		browserIntent.setData(Uri.parse(hashUri.get(marker).toString()));
-		startActivity(browserIntent);
+		Toast.makeText(getApplicationContext(), "Test" /*hashUrl.get(marker).toString()*/, Toast.LENGTH_LONG).show();
 	}
 }
 

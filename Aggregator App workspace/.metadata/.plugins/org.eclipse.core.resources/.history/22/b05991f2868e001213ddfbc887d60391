@@ -116,13 +116,13 @@ public class ListingsMapActivityNew extends FragmentActivity
 
 		//get handle on maps fragment
 		setUpMapIfNeeded();
-		processMarkers();
 	}
 
 	@Override
 	protected void onResume() {
 		super.onResume();
 		myLocation.activate(myLocation.listener);
+		processMarkers();
 	}
 
 	@Override
