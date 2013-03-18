@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="16" version="2.0">
+<workbench progressCount="17" version="2.0">
 <workbenchAdvisor/>
 <window height="728" maximized="true" width="1024" x="130" y="0">
 <fastViewData fastViewLocation="1024"/>
@@ -48,26 +48,26 @@
 </editorArea>
 <editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ListingsMapActivityNew.java" partName="ListingsMapActivityNew.java" path="D:/Personal/Documents/fydp/Aggregator App workspace/Aggregator/src/uwaterloo/fydp/aggregator/ListingsMapActivityNew.java" title="ListingsMapActivityNew.java" tooltip="Aggregator/src/uwaterloo/fydp/aggregator/ListingsMapActivityNew.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Aggregator/src/uwaterloo/fydp/aggregator/ListingsMapActivityNew.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="4366" selectionTopPixel="1935"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="750"/>
 </editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MyLocation.java" partName="MyLocation.java" path="C:/Users/Tim/workspace/Aggregator/src/uwaterloo/fydp/aggregator/MyLocation.java" title="MyLocation.java" tooltip="Aggregator/src/uwaterloo/fydp/aggregator/MyLocation.java" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MyLocation.java" partName="MyLocation.java" path="D:/Personal/Documents/fydp/Aggregator App workspace/Aggregator/src/uwaterloo/fydp/aggregator/MyLocation.java" title="MyLocation.java" tooltip="Aggregator/src/uwaterloo/fydp/aggregator/MyLocation.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Aggregator/src/uwaterloo/fydp/aggregator/MyLocation.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="728" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="261" selectionTopPixel="0"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ListingsTable.java" partName="ListingsTable.java" path="D:/Personal/Documents/fydp/Aggregator App workspace/Aggregator/src/uwaterloo/fydp/aggregator/data/ListingsTable.java" title="ListingsTable.java" tooltip="Aggregator/src/uwaterloo/fydp/aggregator/data/ListingsTable.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Aggregator/src/uwaterloo/fydp/aggregator/data/ListingsTable.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="5" selectionTopPixel="2734"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
 </editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ListingsDatabaseHelper.java" partName="ListingsDatabaseHelper.java" path="C:/Users/Tim/workspace/Aggregator/src/uwaterloo/fydp/aggregator/data/ListingsDatabaseHelper.java" title="ListingsDatabaseHelper.java" tooltip="Aggregator/src/uwaterloo/fydp/aggregator/data/ListingsDatabaseHelper.java" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ListingsDatabaseHelper.java" partName="ListingsDatabaseHelper.java" path="D:/Personal/Documents/fydp/Aggregator App workspace/Aggregator/src/uwaterloo/fydp/aggregator/data/ListingsDatabaseHelper.java" title="ListingsDatabaseHelper.java" tooltip="Aggregator/src/uwaterloo/fydp/aggregator/data/ListingsDatabaseHelper.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Aggregator/src/uwaterloo/fydp/aggregator/data/ListingsDatabaseHelper.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="5" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
 </editor>
 <editor id="com.android.ide.eclipse.editors.CommonXmlEditor" name="custom_info_contents.xml" partName="custom_info_contents.xml" path="D:/Personal/Documents/fydp/Aggregator App workspace/Aggregator/res/layout/custom_info_contents.xml" title="custom_info_contents.xml" tooltip="Aggregator/res/layout/custom_info_contents.xml" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Aggregator/res/layout/custom_info_contents.xml"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ListingsListActivity.java" partName="ListingsListActivity.java" path="D:/Personal/Documents/fydp/Aggregator App workspace/Aggregator/src/uwaterloo/fydp/aggregator/ListingsListActivity.java" title="ListingsListActivity.java" tooltip="Aggregator/src/uwaterloo/fydp/aggregator/ListingsListActivity.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Aggregator/src/uwaterloo/fydp/aggregator/ListingsListActivity.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="104" selectionOffset="2564" selectionTopPixel="60"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
 </editor>
 </editors>
 <views>
@@ -85,8 +85,7 @@
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
 <expanded>
-<category IMemento.internal.id="Warnings"/>
-<category IMemento.internal.id="Errors"/>
+<category IMemento.internal.id="Warnings (2 items)"/>
 </expanded>
 <columnWidths org.eclipse.ui.ide.locationField="90" org.eclipse.ui.ide.markerType="90" org.eclipse.ui.ide.pathField="120" org.eclipse.ui.ide.resourceField="90" org.eclipse.ui.ide.severityAndDescriptionField="300"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
@@ -291,7 +290,7 @@
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.17343174" ratioLeft="235" ratioRight="1120" relationship="2" relative="left"/>
 <info folder="true" part="bottom" ratio="0.7491749" ratioLeft="454" ratioRight="152" relationship="4" relative="org.eclipse.ui.editorss">
-<folder activePageID="com.android.ide.eclipse.ddms.views.LogCatView" appearance="2" expanded="2">
+<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
 <page content="org.eclipse.jdt.ui.JavadocView" label="Javadoc"/>
 <page content="org.eclipse.jdt.ui.SourceView" label="Declaration"/>
@@ -329,7 +328,6 @@
 <editors>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Aggregator/src/uwaterloo/fydp/aggregator/ListingsMapActivityNew.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/Aggregator/res/layout/listings_list_activity.xml"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/Aggregator/res/layout/custom_info_contents.xml"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.manifest.ManifestEditor" path="/Aggregator/AndroidManifest.xml"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/Aggregator/res/layout/listings_map_activity_new.xml"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Aggregator/src/uwaterloo/fydp/aggregator/ListingsMapActivityNew.java"/>
@@ -340,34 +338,12 @@
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Aggregator/src/uwaterloo/fydp/aggregator/CustomItemizedOverlay.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Aggregator/src/uwaterloo/fydp/aggregator/ListingsListActivity.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/Aggregator/res/layout/custom_info_contents.xml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Aggregator/src/uwaterloo/fydp/aggregator/MyLocation.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Aggregator/src/uwaterloo/fydp/aggregator/data/ListingsTable.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Aggregator/src/uwaterloo/fydp/aggregator/data/ListingsDatabaseHelper.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/Aggregator/res/layout/custom_info_contents.xml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Aggregator/src/uwaterloo/fydp/aggregator/ListingsListActivity.java"/>
 </editors>
-<item historyLabel="custom_info_contents.xml" index="2"/>
-<item historyLabel="ListingsMapActivityNew.java" index="0">
-<position info="not_deleted" x="2606" y="0"/>
-</item>
-<item historyLabel="custom_info_contents.xml" index="2"/>
-<item historyLabel="ListingsMapActivityNew.java" index="0">
-<position info="not_deleted" x="2606" y="0"/>
-</item>
-<item historyLabel="ListingsMapActivityNew.java" index="0">
-<position info="not_deleted" x="7339" y="0"/>
-</item>
-<item historyLabel="custom_info_contents.xml" index="2"/>
-<item historyLabel="ListingsMapActivityNew.java" index="0">
-<position info="not_deleted" x="7339" y="0"/>
-</item>
-<item historyLabel="ListingsMapActivityNew.java" index="0">
-<position/>
-</item>
-<item historyLabel="ListingsMapActivityNew.java" index="0">
-<position info="not_deleted" x="2956" y="0"/>
-</item>
-<item historyLabel="ListingsMapActivityNew.java" index="0">
-<position info="not_deleted" x="2955" y="0"/>
-</item>
-<item historyLabel="ListingsMapActivityNew.java" index="0">
-<position info="not_deleted" x="2992" y="0"/>
-</item>
 <item historyLabel="ListingsMapActivityNew.java" index="0">
 <position info="not_deleted" x="3011" y="0"/>
 </item>
@@ -380,96 +356,127 @@
 <item historyLabel="ListingsMapActivityNew.java" index="0">
 <position info="not_deleted" x="3151" y="0"/>
 </item>
-<item historyLabel="Aggregator Manifest" index="3"/>
+<item historyLabel="Aggregator Manifest" index="2"/>
 <item historyLabel="listings_list_activity.xml" index="1"/>
-<item historyLabel="listings_map_activity_new.xml" index="4"/>
+<item historyLabel="listings_map_activity_new.xml" index="3"/>
 <item historyLabel="listings_list_activity.xml" index="1"/>
-<item historyLabel="Aggregator Manifest" index="3"/>
+<item historyLabel="Aggregator Manifest" index="2"/>
 <item historyLabel="ListingsMapActivityNew.java" index="0">
 <position info="not_deleted" x="3151" y="0"/>
 </item>
-<item historyLabel="Aggregator Manifest" index="3"/>
-<item historyLabel="ListingsMapActivityNew.java" index="5">
+<item historyLabel="Aggregator Manifest" index="2"/>
+<item historyLabel="ListingsMapActivityNew.java" index="4">
 <position info="not_deleted" x="3151" y="0"/>
 </item>
-<item historyLabel="ListingsTable.java" index="6">
+<item historyLabel="ListingsTable.java" index="5">
 <position info="not_deleted" x="5" y="0"/>
 </item>
-<item historyLabel="CustomItemizedOverlay.java" index="7">
+<item historyLabel="CustomItemizedOverlay.java" index="6">
 <position info="not_deleted" x="38" y="0"/>
 </item>
-<item historyLabel="ListingsMapActivity.java" index="8">
+<item historyLabel="ListingsMapActivity.java" index="7">
 <position info="not_deleted" x="638" y="0"/>
 </item>
-<item historyLabel="ListingsMapActivityNew.java" index="9">
+<item historyLabel="ListingsMapActivityNew.java" index="8">
 <position info="not_deleted" x="912" y="0"/>
 </item>
-<item historyLabel="CustomItemizedOverlay.java" index="10">
+<item historyLabel="CustomItemizedOverlay.java" index="9">
 <position info="not_deleted" x="38" y="0"/>
 </item>
-<item historyLabel="ListingsMapActivityNew.java" index="9">
+<item historyLabel="ListingsMapActivityNew.java" index="8">
 <position info="not_deleted" x="1721" y="0"/>
 </item>
-<item historyLabel="ListingsMapActivityNew.java" index="9">
+<item historyLabel="ListingsMapActivityNew.java" index="8">
 <position info="not_deleted" x="3623" y="0"/>
 </item>
-<item historyLabel="ListingsMapActivityNew.java" index="9">
+<item historyLabel="ListingsMapActivityNew.java" index="8">
 <position/>
 </item>
-<item historyLabel="ListingsMapActivityNew.java" index="9">
+<item historyLabel="ListingsMapActivityNew.java" index="8">
 <position/>
 </item>
-<item historyLabel="ListingsMapActivityNew.java" index="9">
+<item historyLabel="ListingsMapActivityNew.java" index="8">
 <position info="not_deleted" x="8024" y="0"/>
 </item>
-<item historyLabel="ListingsListActivity.java" index="11">
+<item historyLabel="ListingsListActivity.java" index="10">
 <position info="not_deleted" x="2320" y="0"/>
 </item>
-<item historyLabel="ListingsMapActivityNew.java" index="9">
+<item historyLabel="ListingsMapActivityNew.java" index="8">
 <position info="not_deleted" x="8386" y="0"/>
 </item>
-<item historyLabel="ListingsMapActivityNew.java" index="9">
+<item historyLabel="ListingsMapActivityNew.java" index="8">
 <position info="not_deleted" x="5274" y="0"/>
 </item>
-<item historyLabel="ListingsListActivity.java" index="11">
+<item historyLabel="ListingsListActivity.java" index="10">
 <position info="not_deleted" x="2320" y="0"/>
 </item>
-<item historyLabel="custom_info_contents.xml" index="12"/>
-<item historyLabel="ListingsListActivity.java" index="11">
+<item historyLabel="custom_info_contents.xml" index="11"/>
+<item historyLabel="ListingsListActivity.java" index="10">
 <position info="not_deleted" x="2320" y="0"/>
 </item>
-<item historyLabel="ListingsMapActivityNew.java" index="9">
+<item historyLabel="ListingsMapActivityNew.java" index="8">
 <position info="not_deleted" x="5274" y="0"/>
 </item>
-<item historyLabel="ListingsMapActivityNew.java" index="9">
+<item historyLabel="ListingsMapActivityNew.java" index="8">
 <position info="not_deleted" x="8162" y="0"/>
 </item>
-<item historyLabel="ListingsMapActivityNew.java" index="9">
+<item historyLabel="ListingsMapActivityNew.java" index="8">
 <position info="not_deleted" x="8213" y="0"/>
 </item>
-<item historyLabel="ListingsMapActivityNew.java" index="9">
+<item historyLabel="ListingsMapActivityNew.java" index="8">
 <position info="not_deleted" x="8194" y="0"/>
 </item>
-<item historyLabel="ListingsMapActivityNew.java" index="9">
+<item historyLabel="ListingsMapActivityNew.java" index="8">
 <position info="not_deleted" x="8386" y="0"/>
 </item>
-<item historyLabel="ListingsMapActivityNew.java" index="9">
+<item historyLabel="ListingsMapActivityNew.java" index="8">
 <position info="not_deleted" x="8193" y="0"/>
 </item>
-<item historyLabel="ListingsMapActivityNew.java" index="9">
+<item historyLabel="ListingsMapActivityNew.java" index="8">
 <position info="not_deleted" x="8386" y="0"/>
 </item>
-<item historyLabel="ListingsListActivity.java" index="11">
+<item historyLabel="ListingsListActivity.java" index="10">
 <position info="not_deleted" x="2564" y="104"/>
 </item>
-<item historyLabel="ListingsMapActivityNew.java" index="9">
+<item historyLabel="ListingsMapActivityNew.java" index="8">
 <position info="not_deleted" x="8386" y="0"/>
 </item>
-<item historyLabel="ListingsMapActivityNew.java" index="9">
+<item historyLabel="ListingsMapActivityNew.java" index="8">
 <position info="not_deleted" x="8365" y="0"/>
 </item>
-<item active="true" historyLabel="ListingsMapActivityNew.java" index="9">
+<item historyLabel="ListingsMapActivityNew.java" index="8">
 <position info="not_deleted" x="8350" y="0"/>
+</item>
+<item historyLabel="ListingsMapActivityNew.java" index="8">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="MyLocation.java" index="12">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="MyLocation.java" index="12">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="ListingsTable.java" index="13">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="ListingsTable.java" index="13">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="ListingsDatabaseHelper.java" index="14">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="ListingsDatabaseHelper.java" index="14">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="custom_info_contents.xml" index="15"/>
+<item historyLabel="ListingsListActivity.java" index="16">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="ListingsListActivity.java" index="16">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item active="true" historyLabel="ListingsMapActivityNew.java" index="8">
+<position info="not_deleted" x="0" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
