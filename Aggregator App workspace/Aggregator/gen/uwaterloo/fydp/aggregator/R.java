@@ -143,23 +143,24 @@ containing a value of this type.
     public static final class id {
         public static final int averagePrice=0x7f04000b;
         public static final int averagePriceLabel=0x7f04000a;
+        public static final int emptyProgressBar=0x7f04000c;
+        public static final int emptyTextView=0x7f04000d;
         public static final int hybrid=0x7f040004;
-        public static final int listing_description=0x7f04000d;
-        public static final int listing_price=0x7f04000e;
-        public static final int listing_title=0x7f04000c;
+        public static final int listing_description=0x7f04000f;
+        public static final int listing_price=0x7f040010;
+        public static final int listing_title=0x7f04000e;
         public static final int listingsNextButton=0x7f040009;
         public static final int listingsPrevButton=0x7f040008;
-        public static final int map=0x7f040010;
-        public static final int mapView=0x7f04000f;
-        public static final int menu_map_listings=0x7f040015;
-        public static final int menu_search=0x7f040014;
-        public static final int menu_settings=0x7f040016;
+        public static final int map=0x7f040012;
+        public static final int mapView=0x7f040011;
+        public static final int menu_map_listings=0x7f040017;
+        public static final int menu_search=0x7f040016;
         public static final int none=0x7f040000;
         public static final int normal=0x7f040001;
         public static final int satellite=0x7f040002;
-        public static final int searchActionView=0x7f040011;
-        public static final int searchButton=0x7f040013;
-        public static final int searchEditText=0x7f040012;
+        public static final int searchActionView=0x7f040013;
+        public static final int searchButton=0x7f040015;
+        public static final int searchEditText=0x7f040014;
         public static final int snippet=0x7f040007;
         public static final int tag_url=0x7f040005;
         public static final int terrain=0x7f040003;
@@ -249,7 +250,7 @@ containing a value of this type.
         public static final int menu_search=0x7f050013;
         public static final int menu_settings=0x7f050012;
         public static final int next=0x7f050018;
-        public static final int no_listings_message=0x7f050016;
+        public static final int no_listings_found=0x7f050016;
         public static final int previous=0x7f050017;
         public static final int search_for_listings=0x7f050019;
     }

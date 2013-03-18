@@ -11,10 +11,5 @@
         android:icon="@drawable/ic_map_listings"
         android:showAsAction="ifRoom|withText"
         android:title="@string/menu_map_listings"/>
-    <item
-        android:id="@+id/menu_settings"
-        android:orderInCategory="100"
-        android:showAsAction="never"
-        android:title="@string/menu_settings"/>
 
 </menu>

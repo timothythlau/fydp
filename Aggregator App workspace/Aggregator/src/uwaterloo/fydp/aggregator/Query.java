@@ -1,16 +1,12 @@
-/**
- * Sends HTTP request to server. The server responds with the listings which are then
- * stored into the local database. Uses another thread to send request and perform 
- * database IO.
- */
-
 package uwaterloo.fydp.aggregator;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URLEncoder;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -23,13 +19,14 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 import uwaterloo.fydp.aggregator.data.ListingsTable;
+import android.app.Activity;
 import android.content.Context;
+import android.os.AsyncTask;
 import android.util.Log;
+import android.view.View;
 
-public class Query implements Runnable {
-	private final String baseUrl = "http://107.21.86.40/index.php";
-	//private final String url = "http://107.21.86.40/index.php?action=getListings&search=&cat=1&lat=50&long=50";
-	
+public class Query extends AsyncTask<String, Void, Void> {
+	private final String baseUrl = "http://54.234.149.94/index.php";
 	private final Context mContext;
 	private final String mSearchPhrase;
 	private final int mCategory;
@@ -56,22 +53,37 @@ public class Query implements Runnable {
 	}
 
 	/**
-	 * Send HTTP request to server and process the server response.
+	 * Run on UI thread.
 	 */
 	@Override
-	public void run() {				
+	protected void onPreExecute() {
+		// TODO Show progress bar in UI
+		Activity activity = (Activity) mContext;
+		activity.findViewById(R.id.emptyTextView).setVisibility(View.GONE);
+		activity.findViewById(R.id.emptyProgressBar).setVisibility(View.VISIBLE);
+	}
+
+	/**
+	 * Run in background thread.
+	 */
+	@Override
+	protected Void doInBackground(String... params) {
+		// Clear previous results
+		ListingsTable.getInstance(mContext).deleteAll();
+		publishProgress();
+
 		try {
 			HttpClient httpClient = new DefaultHttpClient();
 			HttpGet request = new HttpGet(getURI());
 			HttpResponse response = httpClient.execute(request);
-			
+
 			BufferedReader reader = new BufferedReader(new InputStreamReader(
 					response.getEntity().getContent()));
-			
-			String responseString = reader.readLine();			
+
+			String responseString = reader.readLine();
 			if (responseString != null) {
 				List<Listing> listings = parseJSONResponse(responseString);
-				updateDatabase(listings);
+				ListingsTable.getInstance(mContext).insert(listings);
 			}
 		} catch (ClientProtocolException e) {
 			Log.e(this.getClass().getName(), "run(): ", e);
@@ -82,39 +94,48 @@ public class Query implements Runnable {
 		} catch (URISyntaxException e) {
 			Log.e(this.getClass().getName(), "run(): ", e);
 		}
+
+		return null;
+	}
+	
+	/**
+	 * Run on UI thread.
+	 */
+	protected void onProgressUpdate(Void... progress) {
+		// TODO Replace list view with progress bar
+		((Activity) mContext).getLoaderManager().getLoader(ListingsListActivity.LISTINGS_LIST_LOADER).onContentChanged();
+	}
+
+	/**
+	 * Run on UI thread.
+	 */
+	@Override
+	protected void onPostExecute(Void result) {
+		// TODO Update list view
+		
+		Activity activity = (Activity) mContext;
+		activity.getLoaderManager().getLoader(ListingsListActivity.LISTINGS_LIST_LOADER).onContentChanged();
+		activity.findViewById(R.id.emptyTextView).setVisibility(View.VISIBLE);
+		activity.findViewById(R.id.emptyProgressBar).setVisibility(View.GONE);
 	}
 	
 	/**
 	 * Returns a URI object containing a properly formatted request URL.
 	 * @return A URI object with the properly formatted URL.
 	 * @throws URISyntaxException
+	 * @throws UnsupportedEncodingException 
 	 */
-	private URI getURI() throws URISyntaxException {
-		return new URI(baseUrl 
+	private URI getURI() throws URISyntaxException, UnsupportedEncodingException {
+		URI uri = new URI(baseUrl 
 				+ "?action=getListings" 
-				+ "&search=" + mSearchPhrase 
+				+ "&search=" + URLEncoder.encode(mSearchPhrase, "UTF-8") 
 				+ "&cat=" + mCategory 
 				+ "&lat=" + mLatitude 
 				+ "&long=" + mLongitude
 				+ "&radius" + mSearchRadius);
-	}
-	
-	/**
-	 * Starts the thread which is responsible for sending the query to
-	 * the server and processing the response.
-	 */
-	public void submit() {
-		(new Thread(this)).start();
-	}
-	
-	/**
-	 * Replaces old listings in database with new ones.
-	 * @param listings List of listings to be inserted into the database.
-	 */
-	private void updateDatabase(List<Listing> listings) {
-		ListingsTable listingsTable = ListingsTable.getInstance(mContext);
-		listingsTable.deleteAll();
-		listingsTable.insert(listings);
+		
+		Log.i(this.getClass().getName(), uri.toString());
+		return uri;
 	}
 	
 	/**
@@ -156,5 +177,4 @@ public class Query implements Runnable {
 		
 		return results;
 	}
-
 }

@@ -5,7 +5,7 @@
     <string name="menu_search">Search</string>
     <string name="menu_map_listings">Map Listings</string>
     <string name="average_price">Average Price</string>
-    <string name="no_listings_message">No listings found!</string>
+    <string name="no_listings_found">No listings found!</string>
     <string name="previous">Previous</string>
     <string name="next">Next</string>
     <string name="search_for_listings">Search for listings</string>

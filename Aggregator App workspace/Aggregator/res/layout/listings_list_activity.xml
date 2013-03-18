@@ -9,11 +9,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <TextView
+    <RelativeLayout
         android:id="@android:id/empty"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="@string/no_listings_message" />
+        android:gravity="center" >
+	    <ProgressBar 
+	        android:id="@+id/emptyProgressBar"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:indeterminateOnly="true"
+	        android:visibility="gone" />
+	    <TextView
+	        android:id="@+id/emptyTextView"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="@string/no_listings_found"
+	        android:visibility="visible" />
+    </RelativeLayout>
 
 </RelativeLayout>

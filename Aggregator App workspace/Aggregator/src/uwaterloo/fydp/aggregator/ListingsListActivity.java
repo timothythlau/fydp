@@ -36,7 +36,7 @@ import android.widget.TextView.OnEditorActionListener;
 
 public class ListingsListActivity extends ListActivity implements
 		LoaderManager.LoaderCallbacks<Cursor> {
-	private static final int LISTINGS_LIST_LOADER = 0x01;
+	public static final int LISTINGS_LIST_LOADER = 0x01;
 	
 	private CursorAdapter mAdapter;
 	private Menu mOptionsMenu;
@@ -104,11 +104,11 @@ public class ListingsListActivity extends ListActivity implements
 	/**
 	 * Handle IME action button press from soft keyboard for search field.
 	 */
-	private OnEditorActionListener searchEditorActionListener = new OnEditorActionListener() {		
+	private OnEditorActionListener searchEditorActionListener = new OnEditorActionListener() {	
 		@Override
 		public boolean onEditorAction(TextView view, int actionId, KeyEvent event) {
 			if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-				Log.i(this.getClass().getName(), "IME search action pressed");
+				Log.i(this.getClass().getName(), "About to call submitQuery");
 				submitQuery(view.getText().toString());
 			}
 			return false;
@@ -121,10 +121,8 @@ public class ListingsListActivity extends ListActivity implements
 	private OnClickListener searchButtonClickListener = new OnClickListener() {		
 		@Override
 		public void onClick(View view) {
-			Log.i(this.getClass().getName(), "Search button was clicked");
-			view.requestFocusFromTouch();
-			EditText searchEditText = (EditText) findViewById(R.id.searchEditText);
-			submitQuery(searchEditText.getText().toString());
+			String searchText = ((EditText) findViewById(R.id.searchEditText)).getText().toString();
+			submitQuery(searchText);
 		}
 	};
 	
@@ -240,10 +238,12 @@ public class ListingsListActivity extends ListActivity implements
 			return;
 		}
 		
-		Query query = new Query(this, searchPhrase, 0, 123.123, 321.321, 5);
-		query.submit();
+		// Update action bar with the search phrase
+		mOptionsMenu.findItem(R.id.menu_search).collapseActionView();
+		getActionBar().setTitle(searchPhrase);
+		
+		new Query(this, searchPhrase, 0, 123.123, 321.321, 5).execute();
 		mLastSearchPhrase = searchPhrase;
-		Log.i(this.getClass().getName(), "submitQuery()");
 	}
 
 	/**
