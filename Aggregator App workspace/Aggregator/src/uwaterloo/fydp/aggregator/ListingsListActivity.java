@@ -16,7 +16,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -55,8 +54,10 @@ public class ListingsListActivity extends ListActivity implements
 //		View footer = getLayoutInflater().inflate(R.layout.listings_footer, null);
 //		getListView().addFooterView(footer);
 
+		//test location init first for location
 		myLocation = new MyLocation(this);
-		myLocation.activate(myLocation.listener);
+		myLocation.deactivate();
+//		myLocation.activate(myLocation.listener);
 		
 		// Create empty adapter which will be used by the ListingsCursorLoader
 		mAdapter = new ListingsCursorAdapter(this, null);
@@ -95,8 +96,8 @@ public class ListingsListActivity extends ListActivity implements
 			
 			//Instead of browser, open map view
 			Intent mapIntent = new Intent(view.getContext(), ListingsMapActivityNew.class);
+			mapIntent.putExtra("searchterm", mLastSearchPhrase);
 			mapIntent.putExtra("url", url);
-			Log.i("url from listview", url);
 			startActivity(mapIntent);
 			
 		}
@@ -181,6 +182,9 @@ public class ListingsListActivity extends ListActivity implements
 	private OnActionExpandListener searchMenuActionExpandListener = new OnActionExpandListener() {
 		@Override
 		public boolean onMenuItemActionExpand(MenuItem item) {
+			//get location
+			myLocation.activate(myLocation.listener);
+			
 			// Set focus to search field and show soft keyboard
 			final EditText searchEditText = (EditText) item.getActionView().findViewById(R.id.searchEditText);
 			
@@ -197,6 +201,8 @@ public class ListingsListActivity extends ListActivity implements
 
 		@Override
 		public boolean onMenuItemActionCollapse(MenuItem item) {
+			myLocation.deactivate();
+			
 			// Hide soft keyboard
 			final EditText searchEditText = (EditText) item.getActionView().findViewById(R.id.searchEditText);
 			InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -214,6 +220,7 @@ public class ListingsListActivity extends ListActivity implements
 		case R.id.menu_map_listings:
 			// Launch map activity
 			Intent intent = new Intent(this, ListingsMapActivityNew.class);
+			intent.putExtra("searchterm", mLastSearchPhrase);
 			startActivity(intent);
 			return true;
 		default:
@@ -279,8 +286,8 @@ public class ListingsListActivity extends ListActivity implements
 		updateActionBarTitle();
 		
 		// Get user's last known location		
-		//LatLng ll = new MyLocation(this).getLatLng();
-		LatLng ll = myLocation.getLatLng();
+		LatLng ll = new MyLocation(this).getLatLng();
+		//LatLng ll = myLocation.getLatLng();
 		
 		new Query(this, searchPhrase, 0, ll.latitude, ll.longitude, 100000).execute();
 	}

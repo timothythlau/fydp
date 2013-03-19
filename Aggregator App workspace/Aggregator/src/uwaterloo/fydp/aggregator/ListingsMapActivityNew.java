@@ -4,7 +4,6 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.text.DecimalFormat;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -17,6 +16,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.InfoWindowAdapter;
 import com.google.android.gms.maps.GoogleMap.OnInfoWindowClickListener;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -111,6 +111,9 @@ public class ListingsMapActivityNew extends FragmentActivity
 		setContentView(R.layout.listings_map_activity_new);
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 
+		Intent mapIntent = getIntent();
+		updateActionBarTitle(mapIntent.getStringExtra("searchterm"));
+		
 		//Create new MyLocation object to get location before initiating map
 		myLocation = new MyLocation(this);
 
@@ -118,17 +121,11 @@ public class ListingsMapActivityNew extends FragmentActivity
 		setUpMapIfNeeded();
 		
 		//Intent from listview? Centre map to marker
-		Intent mapIntent = getIntent();
-		
 		if (mapIntent.getStringExtra("url") == null)
 			processMarkers(null);
 		else
 			processMarkers(mapIntent.getStringExtra("url"));
 		
-		//move to current location only at end of processing everything, and if intent not launched from listview
-//		LatLng currentPos = myLocation.getLatLng();
-//		if (mapIntent.getStringExtra("url") == null)
-//			mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentPos,13));
 	}
 
 	@Override
@@ -254,6 +251,8 @@ public class ListingsMapActivityNew extends FragmentActivity
 		mMap.clear();
 		hashUri = new HashMap<Marker, URI>();
 
+		Pattern kijijiPat = Pattern.compile("[kijiji]+\\.[ca]+", Pattern.CASE_INSENSITIVE);
+		
 		//get listings db and cursor
 		ListingsTable lt = ListingsTable.getInstance(getApplicationContext());
 		Cursor mCursor = lt.getListings();
@@ -273,18 +272,31 @@ public class ListingsMapActivityNew extends FragmentActivity
 			if ((mLat != null || mLng != null) &&
 					mLat >= -90 && mLat <= 90 && mLng >= -180 && mLng <= 180) {
 				
+				//price formatter
 				String mPriceStr;
 				if (mPrice == -1)
-					mPriceStr = "No Listed Price";
+					mPriceStr = "Unspecified price";
 				else if (mPrice == 0)
 					mPriceStr = "Free!";
 				else
 					mPriceStr = "$" + df.format(mPrice).toString();
 				
-				Marker marker = mMap.addMarker(new MarkerOptions().position(new LatLng(mLat,mLng))
-						.title(mTitle).snippet(mPriceStr + "\n" + mDesc));
+				//regex on url to set icon colours
+				Matcher kijijiMat = kijijiPat.matcher(mUrl);
+//				Pattern craigPat = Pattern.compile("[craigslist]+\\.[ca]+", Pattern.CASE_INSENSITIVE);
+//				Matcher craigMat = craigPat.matcher(mUrl);
 				
-				//hash table to retieve URLs for info window click
+				float iconColour;
+				
+				if (kijijiMat.find())
+					iconColour = BitmapDescriptorFactory.HUE_RED;
+				else
+					iconColour = BitmapDescriptorFactory.HUE_VIOLET;
+				
+				//add marker to map and add to hash table for easy lookup for browser on infowindow click
+				Marker marker = mMap.addMarker(new MarkerOptions().position(new LatLng(mLat,mLng))
+						.title(mTitle).snippet(mPriceStr + "\n" + mDesc).icon(BitmapDescriptorFactory.defaultMarker(iconColour)));
+				
 				try {
 					hashUri.put(marker, new URI(mUrl));
 				} catch (URISyntaxException e) {
@@ -333,6 +345,13 @@ public class ListingsMapActivityNew extends FragmentActivity
 		Intent browserIntent = new Intent(Intent.ACTION_VIEW);
 		browserIntent.setData(Uri.parse(hashUri.get(marker).toString()));
 		startActivity(browserIntent);
+	}
+	
+	private void updateActionBarTitle(String mLastSearchPhrase) {
+		if (mLastSearchPhrase == null || mLastSearchPhrase.isEmpty())
+			getActionBar().setTitle(R.string.app_name);
+		else
+			getActionBar().setTitle(mLastSearchPhrase);
 	}
 }
 
