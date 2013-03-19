@@ -4,6 +4,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.text.DecimalFormat;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -103,7 +104,6 @@ public class ListingsMapActivityNew extends FragmentActivity
 	private GoogleMap mMap;
 	private MyLocation myLocation;
 	private HashMap<Marker, URI> hashUri;
-	private List<Marker> markerList;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -168,25 +168,25 @@ public class ListingsMapActivityNew extends FragmentActivity
 				//set custom marker infowindow and infowindowclicklistener
 				mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter());
 				mMap.setOnInfoWindowClickListener(this);
+				mMap.clear();
+				mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myLocation.getLatLng(),13));
 			}
 			
 		}
 	}
 	
-	//with worker thread implementation
-	/*private void processMarkers(final Uri uri) {
+	// worker thread implementation
+	private void processMarkers(final String uri) {
+
 		new Thread(new Runnable() {
 			public void run() {
 				DecimalFormat df = new DecimalFormat("#0.00");
 
-				//clear map first and re-init url hash table
-				//mMap.clear();
-//				hashUri = new HashMap<Marker, URI>();
 				hashUri = new HashMap<Marker, URI>();
-				markerList = new LinkedList<Marker>();
-				
-//				if (uri != null)
-//					hashMarker = new HashMap<URI, Marker>();
+//				List<Marker> markerList = new LinkedList<Marker>();
+//				final Marker displayedMarker;
+
+				Pattern kijijiPat = Pattern.compile("[kijiji]+\\.[ca]+", Pattern.CASE_INSENSITIVE);
 
 				//get listings db and cursor
 				ListingsTable lt = ListingsTable.getInstance(getApplicationContext());
@@ -195,126 +195,67 @@ public class ListingsMapActivityNew extends FragmentActivity
 
 				//traverse listings db and add marker for all listings
 				while (!mCursor.isAfterLast()) {
-					String mTitle = mCursor.getString(mCursor.getColumnIndex(ListingsTable.KEY_TITLE));
-					String mDesc = mCursor.getString(mCursor.getColumnIndex(ListingsTable.KEY_DESCRIPTION))
+					final String mTitle = mCursor.getString(mCursor.getColumnIndex(ListingsTable.KEY_TITLE));
+					final String mDesc = mCursor.getString(mCursor.getColumnIndex(ListingsTable.KEY_DESCRIPTION))
 							.replaceAll("(&nbsp;)", "");
-					Double mPrice = mCursor.getDouble(mCursor.getColumnIndex(ListingsTable.KEY_PRICE));
-					String mUrl = mCursor.getString(mCursor.getColumnIndex(ListingsTable.KEY_URL));
-					Double mLat = mCursor.getDouble(mCursor.getColumnIndex(ListingsTable.KEY_LATITUDE));
-					Double mLng = mCursor.getDouble(mCursor.getColumnIndex(ListingsTable.KEY_LONGITUDE));
+					final Double mPrice = mCursor.getDouble(mCursor.getColumnIndex(ListingsTable.KEY_PRICE));
+					final String mUrl = mCursor.getString(mCursor.getColumnIndex(ListingsTable.KEY_URL));
+					final Double mLat = mCursor.getDouble(mCursor.getColumnIndex(ListingsTable.KEY_LATITUDE));
+					final Double mLng = mCursor.getDouble(mCursor.getColumnIndex(ListingsTable.KEY_LONGITUDE));
 
-					//check if marker lat long is valid, then add markers onto mapp
+					//check if marker lat long is valid, then add markers onto map
 					if ((mLat != null || mLng != null) &&
 							mLat >= -90 && mLat <= 90 && mLng >= -180 && mLng <= 180) {
-						
-						String mPriceStr;
+
+						//price formatter
+						final String mPriceStr;
 						if (mPrice == -1)
-							mPriceStr = "No Listed Price";
+							mPriceStr = "Unspecified price";
 						else if (mPrice == 0)
 							mPriceStr = "Free!";
 						else
 							mPriceStr = "$" + df.format(mPrice).toString();
-						
-						Marker marker = mMap.addMarker(new MarkerOptions().position(new LatLng(mLat,mLng))
-								.title(mTitle).snippet(mPriceStr + "\n" + mDesc));
-						
-						//hash table to retieve URLs for info window click
-						try {
-							hashUri.put(marker, new URI(mUrl));
-						} catch (URISyntaxException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-//							hashUri.remove(marker);
-							marker.remove();
-						}
-						
-						//opened from list view? animate camera to marker
-						if (uri.toString() == mUrl) {
-							marker.showInfoWindow();
-							mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(marker.getPosition(),13));
-						}
+
+						//regex on url to set icon colours
+						Matcher kijijiMat = kijijiPat.matcher(mUrl);
+						//				Pattern craigPat = Pattern.compile("[craigslist]+\\.[ca]+", Pattern.CASE_INSENSITIVE);
+						//				Matcher craigMat = craigPat.matcher(mUrl);
+
+						final float iconColour;
+
+						if (kijijiMat.find())
+							iconColour = BitmapDescriptorFactory.HUE_RED;
+						else
+							iconColour = BitmapDescriptorFactory.HUE_VIOLET;
+
+						ListingsMapActivityNew.this.runOnUiThread(new Runnable () {
+							public void run() {
+								//add marker to map and add to hash table for easy lookup for browser on infowindow click
+								Marker marker = mMap.addMarker(new MarkerOptions().position(new LatLng(mLat,mLng))
+										.title(mTitle).snippet(mPriceStr + "\n" + mDesc).icon(BitmapDescriptorFactory.defaultMarker(iconColour)));
+
+								try {
+									hashUri.put(marker, new URI(mUrl));
+
+									//opened from list view? animate camera to marker
+									if (uri != null && uri.equals(mUrl)) {
+										marker.showInfoWindow();
+										mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(marker.getPosition(),16));							
+									}
+								} catch (URISyntaxException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+									//hashUri.remove(marker);
+									marker.remove();
+								}
+							}
+						});
+
+						mCursor.moveToNext();
 					}
-					
-					mCursor.moveToNext();
 				}
 			}
-		});
-	}*/
-	
-	//without worker thread implementation
-	private void processMarkers(String uri) {
-		mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myLocation.getLatLng(),13));
-		
-		DecimalFormat df = new DecimalFormat("#0.00");
-
-		//clear map first and re-init url hash table
-		mMap.clear();
-		hashUri = new HashMap<Marker, URI>();
-
-		Pattern kijijiPat = Pattern.compile("[kijiji]+\\.[ca]+", Pattern.CASE_INSENSITIVE);
-		
-		//get listings db and cursor
-		ListingsTable lt = ListingsTable.getInstance(getApplicationContext());
-		Cursor mCursor = lt.getListings();
-		mCursor.moveToFirst();
-
-		//traverse listings db and add marker for all listings
-		while (!mCursor.isAfterLast()) {
-			String mTitle = mCursor.getString(mCursor.getColumnIndex(ListingsTable.KEY_TITLE));
-			String mDesc = mCursor.getString(mCursor.getColumnIndex(ListingsTable.KEY_DESCRIPTION))
-					.replaceAll("(&nbsp;)", "");
-			Double mPrice = mCursor.getDouble(mCursor.getColumnIndex(ListingsTable.KEY_PRICE));
-			String mUrl = mCursor.getString(mCursor.getColumnIndex(ListingsTable.KEY_URL));
-			Double mLat = mCursor.getDouble(mCursor.getColumnIndex(ListingsTable.KEY_LATITUDE));
-			Double mLng = mCursor.getDouble(mCursor.getColumnIndex(ListingsTable.KEY_LONGITUDE));
-
-			//check if marker lat long is valid, then add markers onto map
-			if ((mLat != null || mLng != null) &&
-					mLat >= -90 && mLat <= 90 && mLng >= -180 && mLng <= 180) {
-				
-				//price formatter
-				String mPriceStr;
-				if (mPrice == -1)
-					mPriceStr = "Unspecified price";
-				else if (mPrice == 0)
-					mPriceStr = "Free!";
-				else
-					mPriceStr = "$" + df.format(mPrice).toString();
-				
-				//regex on url to set icon colours
-				Matcher kijijiMat = kijijiPat.matcher(mUrl);
-//				Pattern craigPat = Pattern.compile("[craigslist]+\\.[ca]+", Pattern.CASE_INSENSITIVE);
-//				Matcher craigMat = craigPat.matcher(mUrl);
-				
-				float iconColour;
-				
-				if (kijijiMat.find())
-					iconColour = BitmapDescriptorFactory.HUE_RED;
-				else
-					iconColour = BitmapDescriptorFactory.HUE_VIOLET;
-				
-				//add marker to map and add to hash table for easy lookup for browser on infowindow click
-				Marker marker = mMap.addMarker(new MarkerOptions().position(new LatLng(mLat,mLng))
-						.title(mTitle).snippet(mPriceStr + "\n" + mDesc).icon(BitmapDescriptorFactory.defaultMarker(iconColour)));
-				
-				try {
-					hashUri.put(marker, new URI(mUrl));
-				} catch (URISyntaxException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-//					hashUri.remove(marker);
-					marker.remove();
-				}
-				
-				//opened from list view? animate camera to marker
-				if (uri != null && uri.equals(mUrl)) {
-					marker.showInfoWindow();
-					mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(marker.getPosition(),16));
-				}
-			}
-			
-			mCursor.moveToNext();
-		}
+		}).start();
 	}
 
 	@Override
