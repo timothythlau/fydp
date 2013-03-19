@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="WorkbenchPreferenceDialogSettings">
+<<<<<<< HEAD
 		<item value="140" key="DIALOG_Y_ORIGIN"/>
 		<item value="649" key="DIALOG_X_ORIGIN"/>
+=======
+		<item value="218" key="DIALOG_Y_ORIGIN"/>
+		<item value="651" key="DIALOG_X_ORIGIN"/>
+>>>>>>> 4d2e1cdcfb68abb34a4f77356fa367036f077cfb
 	</section>
 	<section name="ImportExportAction">
 		<item value="org.eclipse.ui.wizards.import.ExternalProject" key="ImportExportPage.STORE_SELECTED_IMPORT_WIZARD_ID"/>

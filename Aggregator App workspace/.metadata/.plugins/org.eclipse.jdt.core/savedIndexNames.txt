@@ -4,4 +4,8 @@ INDEX VERSION 1.126+D:\Personal\Documents\fydp\Aggregator App workspace\.metadat
 504635884.index
 848856923.index
 69925087.index
+<<<<<<< HEAD
+=======
+1220862854.index
+>>>>>>> 4d2e1cdcfb68abb34a4f77356fa367036f077cfb
 2689454231.index
