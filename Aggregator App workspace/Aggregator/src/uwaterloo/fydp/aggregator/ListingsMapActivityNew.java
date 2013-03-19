@@ -4,6 +4,8 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.text.DecimalFormat;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -13,14 +15,11 @@ import uwaterloo.fydp.aggregator.data.ListingsTable;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.InfoWindowAdapter;
-import com.google.android.gms.maps.GoogleMap.OnCameraChangeListener;
 import com.google.android.gms.maps.GoogleMap.OnInfoWindowClickListener;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
@@ -38,7 +37,7 @@ import android.view.View;
 import android.widget.TextView;
 
 public class ListingsMapActivityNew extends FragmentActivity 
-	implements OnCameraChangeListener, OnInfoWindowClickListener {
+	implements OnInfoWindowClickListener {
 
 	class CustomInfoWindowAdapter implements InfoWindowAdapter {
 		//private final View mWindow;
@@ -102,8 +101,8 @@ public class ListingsMapActivityNew extends FragmentActivity
 
 	private GoogleMap mMap;
 	private MyLocation myLocation;
-	private float prevZoom;
 	private HashMap<Marker, URI> hashUri;
+	private List<Marker> markerList;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -116,7 +115,19 @@ public class ListingsMapActivityNew extends FragmentActivity
 
 		//get handle on maps fragment
 		setUpMapIfNeeded();
-		processMarkers();
+		
+		//Intent from listview? Centre map to marker
+		Intent mapIntent = getIntent();
+
+		if (mapIntent.getStringExtra("url") == null)
+			processMarkers(null);
+		else
+			processMarkers(Uri.parse(mapIntent.getStringExtra("url")));
+		
+		//move to current location only at end of processing everything, and if intent not launched from listview
+		LatLng currentPos = myLocation.getLatLng();
+		if (mapIntent.getStringExtra("url") == null)
+			mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentPos,13));
 	}
 
 	@Override
@@ -131,12 +142,12 @@ public class ListingsMapActivityNew extends FragmentActivity
 		myLocation.deactivate();
 	}
 
-	@Override
+/*	@Override
 	protected void onStop() {
 		super.onStop();
 		//mMap.clear();
 		//myLocation.deactivate();
-	}
+	}*/
 
 	@Override
 	protected void onDestroy() {
@@ -151,10 +162,7 @@ public class ListingsMapActivityNew extends FragmentActivity
 			// Try to obtain the map from the SupportMapFragment.
 			mMap = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map)).getMap();
 			// Check if we were successful in obtaining the map.
-			if (mMap != null) {
-				mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(myLocation.getLatLng(),13));
-				//setUpMap();
-				
+			if (mMap != null) {				
 				//This is how you register the LocationSource
 				mMap.setLocationSource(myLocation);
 				mMap.setMyLocationEnabled(true);
@@ -166,21 +174,86 @@ public class ListingsMapActivityNew extends FragmentActivity
 			
 		}
 	}
+	
+	//with worker thread implementation
+	/*private void processMarkers(final Uri uri) {
+		new Thread(new Runnable() {
+			public void run() {
+				DecimalFormat df = new DecimalFormat("#0.00");
 
-	/*	private void setUpMap() {
-//		mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(myLocation.getLatLng(),13));
-//		mMap.addMarker(new MarkerOptions().position(new LatLng(43.46136, -80.53318)).title("Marker 1").snippet("This is a test snippet."));
-//		mMap.addMarker(new MarkerOptions().position(new LatLng(43.46385, -80.5230)).title("Marker 2").snippet("This is a test snippet. Balls."));
+				//clear map first and re-init url hash table
+				//mMap.clear();
+//				hashUri = new HashMap<Marker, URI>();
+				hashUri = new HashMap<Marker, URI>();
+				markerList = new LinkedList<Marker>();
+				
+//				if (uri != null)
+//					hashMarker = new HashMap<URI, Marker>();
 
-		processMarkers();
+				//get listings db and cursor
+				ListingsTable lt = ListingsTable.getInstance(getApplicationContext());
+				Cursor mCursor = lt.getListings();
+				mCursor.moveToFirst();
+
+				//traverse listings db and add marker for all listings
+				while (!mCursor.isAfterLast()) {
+					String mTitle = mCursor.getString(mCursor.getColumnIndex(ListingsTable.KEY_TITLE));
+					String mDesc = mCursor.getString(mCursor.getColumnIndex(ListingsTable.KEY_DESCRIPTION))
+							.replaceAll("(&nbsp;)", "");
+					Double mPrice = mCursor.getDouble(mCursor.getColumnIndex(ListingsTable.KEY_PRICE));
+					String mUrl = mCursor.getString(mCursor.getColumnIndex(ListingsTable.KEY_URL));
+					Double mLat = mCursor.getDouble(mCursor.getColumnIndex(ListingsTable.KEY_LATITUDE));
+					Double mLng = mCursor.getDouble(mCursor.getColumnIndex(ListingsTable.KEY_LONGITUDE));
+
+					//check if marker lat long is valid, then add markers onto mapp
+					if ((mLat != null || mLng != null) &&
+							mLat >= -90 && mLat <= 90 && mLng >= -180 && mLng <= 180) {
+						
+						String mPriceStr;
+						if (mPrice == -1)
+							mPriceStr = "No Listed Price";
+						else if (mPrice == 0)
+							mPriceStr = "Free!";
+						else
+							mPriceStr = "$" + df.format(mPrice).toString();
+						
+						Marker marker = mMap.addMarker(new MarkerOptions().position(new LatLng(mLat,mLng))
+								.title(mTitle).snippet(mPriceStr + "\n" + mDesc));
+						
+						//hash table to retieve URLs for info window click
+						try {
+							hashUri.put(marker, new URI(mUrl));
+						} catch (URISyntaxException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+//							hashUri.remove(marker);
+							marker.remove();
+						}
+						
+						//opened from list view? animate camera to marker
+						if (uri.toString() == mUrl) {
+							marker.showInfoWindow();
+							mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(marker.getPosition(),13));
+						}
+					}
+					
+					mCursor.moveToNext();
+				}
+			}
+		});
 	}*/
 	
-	private void processMarkers() {
+	//without worker thread implementation
+	private void processMarkers(Uri uri) {
 		DecimalFormat df = new DecimalFormat("#0.00");
 
 		//clear map first and re-init url hash table
 		mMap.clear();
+//		hashUri = new HashMap<Marker, URI>();
 		hashUri = new HashMap<Marker, URI>();
+		
+//		if (uri != null)
+//			hashMarker = new HashMap<URI, Marker>();
 
 		//get listings db and cursor
 		ListingsTable lt = ListingsTable.getInstance(getApplicationContext());
@@ -192,24 +265,40 @@ public class ListingsMapActivityNew extends FragmentActivity
 			String mTitle = mCursor.getString(mCursor.getColumnIndex(ListingsTable.KEY_TITLE));
 			String mDesc = mCursor.getString(mCursor.getColumnIndex(ListingsTable.KEY_DESCRIPTION))
 					.replaceAll("(&nbsp;)", "");
-			double mPrice = mCursor.getDouble(mCursor.getColumnIndex(ListingsTable.KEY_PRICE));
+			Double mPrice = mCursor.getDouble(mCursor.getColumnIndex(ListingsTable.KEY_PRICE));
 			String mUrl = mCursor.getString(mCursor.getColumnIndex(ListingsTable.KEY_URL));
-			//			String mTitle = mCursor.getString(1);
-			//			String mDesc = mCursor.getString(2);
 			Double mLat = mCursor.getDouble(mCursor.getColumnIndex(ListingsTable.KEY_LATITUDE));
 			Double mLng = mCursor.getDouble(mCursor.getColumnIndex(ListingsTable.KEY_LONGITUDE));
 
-			if (mLat != null || mLng != null) {
-				Marker marker = mMap.addMarker(new MarkerOptions().position(new LatLng(mLat,mLng))
-						.title(mTitle).snippet("$" + df.format(mPrice)+ "\n" + mDesc));
+			//check if marker lat long is valid, then add markers onto mapp
+			if ((mLat != null || mLng != null) &&
+					mLat >= -90 && mLat <= 90 && mLng >= -180 && mLng <= 180) {
 				
+				String mPriceStr;
+				if (mPrice == -1)
+					mPriceStr = "No Listed Price";
+				else if (mPrice == 0)
+					mPriceStr = "Free!";
+				else
+					mPriceStr = "$" + df.format(mPrice).toString();
+				
+				Marker marker = mMap.addMarker(new MarkerOptions().position(new LatLng(mLat,mLng))
+						.title(mTitle).snippet(mPriceStr + "\n" + mDesc));
+				
+				//hash table to retieve URLs for info window click
 				try {
 					hashUri.put(marker, new URI(mUrl));
 				} catch (URISyntaxException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-					hashUri.remove(marker);
+//					hashUri.remove(marker);
 					marker.remove();
+				}
+				
+				//opened from list view? animate camera to marker
+				if (uri.toString() == mUrl) {
+					marker.showInfoWindow();
+					mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(marker.getPosition(),13));
 				}
 			}
 			
@@ -235,12 +324,6 @@ public class ListingsMapActivityNew extends FragmentActivity
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
-	}
-
-	@Override
-	public void onCameraChange(CameraPosition position) {
-		// TODO Auto-generated method stub
-		prevZoom = position.zoom;
 	}
 
 	@Override

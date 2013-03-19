@@ -4,6 +4,7 @@
 		<item value="true" key="WizardFileSystemResourceImportPage1.STORE_OVERWRITE_EXISTING_RESOURCES_ID"/>
 		<item value="false" key="WizardFileSystemResourceImportPage1.STORE_CREATE_CONTAINER_STRUCTURE_ID"/>
 		<list key="WizardFileSystemResourceImportPage1.STORE_SOURCE_NAMES_ID">
+			<item value="D:\Personal\Downloads"/>
 			<item value="C:\Users\Tim\Downloads\launcher icon\drawable-xhdpi"/>
 			<item value="C:\Users\Tim\Downloads\launcher icon\drawable-mdpi"/>
 			<item value="C:\Users\Tim\Downloads\launcher icon\drawable-ldpi"/>

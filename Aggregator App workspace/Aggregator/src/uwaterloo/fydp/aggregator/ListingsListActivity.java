@@ -69,11 +69,17 @@ public class ListingsListActivity extends ListActivity implements
 		public void onItemClick(AdapterView<?> parent, View view, int position,
 				long id) {
 			String url = (String) view.getTag(R.id.tag_url);
-			if (!url.startsWith("http://") && !url.startsWith("https://"))
-				url = "http://" + url;
+//			if (!url.startsWith("http://") && !url.startsWith("https://"))
+//				url = "http://" + url;
 			
-			Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-			startActivity(browserIntent);
+//			Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+//			startActivity(browserIntent);
+			
+			//Instead of browser, open map view
+			Intent mapIntent = new Intent(view.getContext(), ListingsMapActivityNew.class);
+			mapIntent.putExtra("url", url);
+			startActivity(mapIntent);
+			
 		}
 	};
 
