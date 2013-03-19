@@ -26,13 +26,17 @@ public class ListingsTable {
 	public static final String KEY_URL = "url";
 	public static final String KEY_LATITUDE = "latitude";
 	public static final String KEY_LONGITUDE = "longitude";
+	public static final String KEY_DATE = "date";
+	public static final String KEY_SOURCE = "source";
 	private static final String LISTINGS_TABLE_CREATE = "CREATE TABLE "
 			+ LISTINGS_TABLE_NAME + "(" + KEY_ROW_ID
 			+ " INTEGER PRIMARY KEY AUTOINCREMENT, " + KEY_TITLE
 			+ " TEXT NOT NULL, " + KEY_DESCRIPTION + " TEXT NULL, "
 			+ KEY_CATEGORY + " TEXT NULL, " + KEY_PRICE + " REAL, " + KEY_URL
 			+ " TEXT NOT NULL, " + KEY_LATITUDE + " REAL NULL, "
-			+ KEY_LONGITUDE + " REAL NULL);";
+			+ KEY_LONGITUDE + " REAL NULL, "
+			+ KEY_DATE + " TEXT NULL, "
+			+ KEY_SOURCE + " TEXT NULL);";
 
 	private static ListingsTable instance = null;
 	private Context mContext;
@@ -153,7 +157,7 @@ public class ListingsTable {
 				
 				// Bind data to columns
 				ih.bind(titleColumnIndex, listing.getTitle());
-				ih.bind(descriptionColumnIndex, listing.getFullDescription());
+				ih.bind(descriptionColumnIndex, listing.getBriefDescription());
 				ih.bind(categoryColumnIndex, listing.getCategory());
 				ih.bind(priceColumnIndex, listing.getPrice());
 				ih.bind(urlColumnIndex, listing.getUrl());

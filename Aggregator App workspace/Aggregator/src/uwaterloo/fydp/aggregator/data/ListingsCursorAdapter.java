@@ -50,10 +50,18 @@ public class ListingsCursorAdapter extends CursorAdapter {
 		vh.title.setText(cursor.getString(mTitleColumnIndex));
 		vh.description.setText(cursor.getString(mDescriptionColumnIndex));
 
-		String pattern = "'$'#,##0.00";
-		NumberFormat numberFormat = new DecimalFormat(pattern);
-		vh.price.setText(numberFormat.format(cursor
-				.getDouble(mPriceColumnIndex)));
+		double price = cursor.getDouble(mPriceColumnIndex);
+		if (price > 0) {
+			String pattern = "'$'#,##0.00";
+			NumberFormat numberFormat = new DecimalFormat(pattern);
+			vh.price.setText(numberFormat.format(price));
+		} else if (price == 0) {
+			vh.price.setText("Free");
+		} else if (price == -1) {
+			vh.price.setText("Unspecified");
+		} else if (price == -2) {
+			vh.price.setText("Swap");
+		}
 		
 		view.setTag(R.id.tag_url, cursor.getString(mUrlColumnIndex));
 	}

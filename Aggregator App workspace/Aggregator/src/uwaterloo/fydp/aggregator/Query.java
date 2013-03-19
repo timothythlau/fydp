@@ -43,7 +43,8 @@ public class Query extends AsyncTask<String, Void, Void> {
 	 * @param longitude The longitude around which the query is centered.
 	 * @param searchRadius The radius within which to restrict the query.
 	 */
-	public Query(Context context, String searchPhrase, int category, double latitude, double longitude, int searchRadius) {
+	public Query(Context context, String searchPhrase, int category, 
+			double latitude, double longitude, int searchRadius) {
 		mContext = context;
 		mSearchPhrase = searchPhrase;
 		mCategory = category;
@@ -103,7 +104,8 @@ public class Query extends AsyncTask<String, Void, Void> {
 	 */
 	protected void onProgressUpdate(Void... progress) {
 		// TODO Replace list view with progress bar
-		((Activity) mContext).getLoaderManager().getLoader(ListingsListActivity.LISTINGS_LIST_LOADER).onContentChanged();
+		((Activity) mContext).getLoaderManager().getLoader(
+				ListingsListActivity.LISTINGS_LIST_LOADER).onContentChanged();
 	}
 
 	/**
@@ -114,7 +116,8 @@ public class Query extends AsyncTask<String, Void, Void> {
 		// TODO Update list view
 		
 		Activity activity = (Activity) mContext;
-		activity.getLoaderManager().getLoader(ListingsListActivity.LISTINGS_LIST_LOADER).onContentChanged();
+		activity.getLoaderManager().getLoader(
+				ListingsListActivity.LISTINGS_LIST_LOADER).onContentChanged();
 		activity.findViewById(R.id.emptyTextView).setVisibility(View.VISIBLE);
 		activity.findViewById(R.id.emptyProgressBar).setVisibility(View.GONE);
 	}
@@ -125,14 +128,17 @@ public class Query extends AsyncTask<String, Void, Void> {
 	 * @throws URISyntaxException
 	 * @throws UnsupportedEncodingException 
 	 */
-	private URI getURI() throws URISyntaxException, UnsupportedEncodingException {
+	private URI getURI() 
+			throws URISyntaxException, UnsupportedEncodingException {
+		// TODO: Remove maxResults
 		URI uri = new URI(baseUrl 
 				+ "?action=getListings" 
 				+ "&search=" + URLEncoder.encode(mSearchPhrase, "UTF-8") 
 				+ "&cat=" + mCategory 
 				+ "&lat=" + mLatitude 
 				+ "&long=" + mLongitude
-				+ "&radius" + mSearchRadius);
+				+ "&maxDistance=" + mSearchRadius
+				+ "&maxResults=1000");
 		
 		Log.i(this.getClass().getName(), uri.toString());
 		return uri;
@@ -151,19 +157,20 @@ public class Query extends AsyncTask<String, Void, Void> {
 		for (int i = 0; i < resultArray.length(); i++) {
 			String title = resultArray.getJSONObject(i).getString("Title");
 			String briefDescription = resultArray.getJSONObject(i).getString("BriefDescription");
-			String fullDescription = resultArray.getJSONObject(i).getString("FullDescription");
 			int category = resultArray.getJSONObject(i).getInt("Category");
 			double price =  resultArray.getJSONObject(i).getDouble("Price");
+			String date = resultArray.getJSONObject(i).getString("Date");
 			String address = resultArray.getJSONObject(i).getString("Address");
 			double latitude = resultArray.getJSONObject(i).getDouble("Lat");
 			double longitude = resultArray.getJSONObject(i).getDouble("Long");
 			String url = resultArray.getJSONObject(i).getString("URL");
+			String source = resultArray.getJSONObject(i).getString("Source");
 			String additionalFields = resultArray.getJSONObject(i).getString("AdditionalFields");
 			
 			Listing listing = new Listing();
 			listing.setTitle(title);
 			listing.setBriefDescription(briefDescription);
-			listing.setFullDescription(fullDescription);
+			listing.setDate(date);
 			listing.setCategory(category);
 			listing.setPrice(price);
 			listing.setAddress(address);
@@ -171,6 +178,7 @@ public class Query extends AsyncTask<String, Void, Void> {
 			listing.setLongitude(longitude);
 			listing.setUrl(url);
 			listing.setAdditionalFields(additionalFields);
+			listing.setSource(source);
 			
 			results.add(listing);
 		}

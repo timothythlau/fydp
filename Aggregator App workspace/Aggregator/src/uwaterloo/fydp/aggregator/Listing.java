@@ -8,7 +8,7 @@ package uwaterloo.fydp.aggregator;
 public class Listing {
 	private String mTitle;
 	private String mBriefDescription;
-	private String mFullDescription;
+	private String mDate;
 	private int mCategory;
 	private double mPrice;
 	private String mAddress;
@@ -16,6 +16,7 @@ public class Listing {
 	private double mLongitude;
 	private String mUrl;
 	private String mAdditionalFields;
+	private String mSource;
 
 	public String getTitle() {
 		return mTitle;
@@ -33,12 +34,12 @@ public class Listing {
 		mBriefDescription = value;
 	}
 
-	public String getFullDescription() {
-		return mFullDescription;
+	public String getDate() {
+		return mDate;
 	}
 	
-	public void setFullDescription(String value) {
-		mFullDescription = value;
+	public void setDate(String value) {
+		mDate = value;
 	}
 
 	public int getCategory() {
@@ -95,5 +96,13 @@ public class Listing {
 	
 	public void setAdditionalFields(String value) {
 		mAdditionalFields = value;
+	}
+	
+	public String getSource() {
+		return mSource;
+	}
+	
+	public void setSource(String value) {
+		mSource = value;
 	}
 }

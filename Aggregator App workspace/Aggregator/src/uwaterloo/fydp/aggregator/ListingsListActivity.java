@@ -5,6 +5,8 @@
 
 package uwaterloo.fydp.aggregator;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import uwaterloo.fydp.aggregator.data.ListingsCursorAdapter;
 import uwaterloo.fydp.aggregator.data.ListingsCursorLoader;
 import uwaterloo.fydp.aggregator.data.ListingsTable;
@@ -61,6 +63,12 @@ public class ListingsListActivity extends ListActivity implements
 		getLoaderManager().initLoader(LISTINGS_LIST_LOADER, null, this);
 	}
 	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		updateActionBarTitle();
+	}
+	
 	/**
 	 * Handle list view item clicks.
 	 */
@@ -99,6 +107,16 @@ public class ListingsListActivity extends ListActivity implements
 		searchButton.setOnClickListener(searchButtonClickListener);
 
 		return super.onCreateOptionsMenu(menu);
+	}
+	
+	/**
+	 * Update the ActionBar title to the search phrase
+	 */
+	private void updateActionBarTitle() {
+		if (mLastSearchPhrase.isEmpty())
+			getActionBar().setTitle(R.string.app_name);
+		else
+			getActionBar().setTitle(mLastSearchPhrase);
 	}
 	
 	/**
@@ -238,12 +256,15 @@ public class ListingsListActivity extends ListActivity implements
 			return;
 		}
 		
-		// Update action bar with the search phrase
+		// Collapse ActionView (a.k.a the search box and button)
 		mOptionsMenu.findItem(R.id.menu_search).collapseActionView();
-		getActionBar().setTitle(searchPhrase);
-		
-		new Query(this, searchPhrase, 0, 123.123, 321.321, 5).execute();
 		mLastSearchPhrase = searchPhrase;
+		updateActionBarTitle();
+		
+		// Get user's last known location		
+		LatLng ll = new MyLocation(this).getLatLng();
+		
+		new Query(this, searchPhrase, 0, ll.latitude, ll.longitude, 100000).execute();
 	}
 
 	/**
