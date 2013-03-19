@@ -30,6 +30,7 @@ import android.support.v4.app.FragmentActivity;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -118,16 +119,16 @@ public class ListingsMapActivityNew extends FragmentActivity
 		
 		//Intent from listview? Centre map to marker
 		Intent mapIntent = getIntent();
-
+		
 		if (mapIntent.getStringExtra("url") == null)
 			processMarkers(null);
 		else
-			processMarkers(Uri.parse(mapIntent.getStringExtra("url")));
+			processMarkers(mapIntent.getStringExtra("url"));
 		
 		//move to current location only at end of processing everything, and if intent not launched from listview
-		LatLng currentPos = myLocation.getLatLng();
-		if (mapIntent.getStringExtra("url") == null)
-			mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentPos,13));
+//		LatLng currentPos = myLocation.getLatLng();
+//		if (mapIntent.getStringExtra("url") == null)
+//			mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentPos,13));
 	}
 
 	@Override
@@ -244,16 +245,14 @@ public class ListingsMapActivityNew extends FragmentActivity
 	}*/
 	
 	//without worker thread implementation
-	private void processMarkers(Uri uri) {
+	private void processMarkers(String uri) {
+		mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myLocation.getLatLng(),13));
+		
 		DecimalFormat df = new DecimalFormat("#0.00");
 
 		//clear map first and re-init url hash table
 		mMap.clear();
-//		hashUri = new HashMap<Marker, URI>();
 		hashUri = new HashMap<Marker, URI>();
-		
-//		if (uri != null)
-//			hashMarker = new HashMap<URI, Marker>();
 
 		//get listings db and cursor
 		ListingsTable lt = ListingsTable.getInstance(getApplicationContext());
@@ -270,7 +269,7 @@ public class ListingsMapActivityNew extends FragmentActivity
 			Double mLat = mCursor.getDouble(mCursor.getColumnIndex(ListingsTable.KEY_LATITUDE));
 			Double mLng = mCursor.getDouble(mCursor.getColumnIndex(ListingsTable.KEY_LONGITUDE));
 
-			//check if marker lat long is valid, then add markers onto mapp
+			//check if marker lat long is valid, then add markers onto map
 			if ((mLat != null || mLng != null) &&
 					mLat >= -90 && mLat <= 90 && mLng >= -180 && mLng <= 180) {
 				
@@ -296,9 +295,9 @@ public class ListingsMapActivityNew extends FragmentActivity
 				}
 				
 				//opened from list view? animate camera to marker
-				if (uri.toString() == mUrl) {
+				if (uri != null && uri.equals(mUrl)) {
 					marker.showInfoWindow();
-					mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(marker.getPosition(),13));
+					mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(marker.getPosition(),16));
 				}
 			}
 			

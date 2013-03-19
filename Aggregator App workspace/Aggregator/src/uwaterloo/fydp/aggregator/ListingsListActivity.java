@@ -73,6 +73,12 @@ public class ListingsListActivity extends ListActivity implements
 		updateActionBarTitle();
 	}
 	
+	@Override
+	protected void onPause() {
+		super.onPause();
+		myLocation.deactivate();
+	}
+	
 	/**
 	 * Handle list view item clicks.
 	 */
@@ -90,6 +96,7 @@ public class ListingsListActivity extends ListActivity implements
 			//Instead of browser, open map view
 			Intent mapIntent = new Intent(view.getContext(), ListingsMapActivityNew.class);
 			mapIntent.putExtra("url", url);
+			Log.i("url from listview", url);
 			startActivity(mapIntent);
 			
 		}

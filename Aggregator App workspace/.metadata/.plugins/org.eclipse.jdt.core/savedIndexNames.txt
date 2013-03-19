@@ -1,11 +1,12 @@
 INDEX VERSION 1.126+D:\Personal\Documents\fydp\Aggregator App workspace\.metadata\.plugins\org.eclipse.jdt.core
-245830778.index
-3513784893.index
 504635884.index
+2090179322.index
+3513784893.index
+3083963840.index
+4136921309.index
+1220862854.index
+2689454231.index
 848856923.index
 69925087.index
-<<<<<<< HEAD
-=======
-1220862854.index
->>>>>>> 4d2e1cdcfb68abb34a4f77356fa367036f077cfb
-2689454231.index
+245830778.index
+1242190983.index

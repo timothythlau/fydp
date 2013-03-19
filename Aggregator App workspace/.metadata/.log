@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-!SESSION 2013-03-19 01:41:07.556 -----------------------------------------------
-=======
-!SESSION 2013-03-19 02:31:21.622 -----------------------------------------------
->>>>>>> 4d2e1cdcfb68abb34a4f77356fa367036f077cfb
+!SESSION 2013-03-19 02:41:39.354 -----------------------------------------------
 eclipse.buildId=v21.1.0-569685
 java.version=1.7.0_05
 java.vendor=Oracle Corporation
@@ -10,17 +6,10 @@ BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
 Framework arguments:  -product com.android.ide.eclipse.adt.package.product
 Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product com.android.ide.eclipse.adt.package.product
 
-<<<<<<< HEAD
-!ENTRY com.android.ide.eclipse.ddms 4 0 2013-03-19 01:41:12.257
+!ENTRY com.android.ide.eclipse.ddms 4 0 2013-03-19 02:41:43.858
 !MESSAGE DDMS files not found: D:\adt-bundle-windows-x86_64-20130219\eclipse\platform-tools\adb.exe D:\adt-bundle-windows-x86_64-20130219\eclipse\tools\hprof-conv.exe D:\adt-bundle-windows-x86_64-20130219\eclipse\tools\traceview.bat 
 
-!ENTRY com.android.ide.eclipse.adt 4 0 2013-03-19 01:41:28.658
-=======
-!ENTRY com.android.ide.eclipse.ddms 4 0 2013-03-19 02:31:26.281
-!MESSAGE DDMS files not found: D:\adt-bundle-windows-x86_64-20130219\eclipse\platform-tools\adb.exe D:\adt-bundle-windows-x86_64-20130219\eclipse\tools\hprof-conv.exe D:\adt-bundle-windows-x86_64-20130219\eclipse\tools\traceview.bat 
-
-!ENTRY com.android.ide.eclipse.adt 4 0 2013-03-19 02:31:37.698
->>>>>>> 4d2e1cdcfb68abb34a4f77356fa367036f077cfb
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-03-19 02:41:52.648
 !MESSAGE 
 !STACK 1
 org.eclipse.core.internal.resources.ResourceException: Resource '/Aggregator/res' does not exist.
@@ -30,117 +19,36 @@ org.eclipse.core.internal.resources.ResourceException: Resource '/Aggregator/res
 	at org.eclipse.core.internal.resources.Container.members(Container.java:249)
 	at com.android.ide.eclipse.adt.internal.sdk.Sdk$6.run(Sdk.java:1306)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
-<<<<<<< HEAD
-!SUBENTRY 1 org.eclipse.core.resources 4 368 2013-03-19 01:41:28.659
+!SUBENTRY 1 org.eclipse.core.resources 4 368 2013-03-19 02:41:52.649
 !MESSAGE Resource '/Aggregator/res' does not exist.
 
-!ENTRY com.android.ide.eclipse.adt 4 0 2013-03-19 01:41:28.662
-!MESSAGE 
-!STACK 1
-org.eclipse.core.internal.resources.ResourceException: Resource '/google-play-services_lib/res' does not exist.
-=======
-!SUBENTRY 1 org.eclipse.core.resources 4 368 2013-03-19 02:31:37.699
-!MESSAGE Resource '/Aggregator/res' does not exist.
-
-!ENTRY com.android.ide.eclipse.adt 4 0 2013-03-19 02:31:37.701
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-03-19 02:41:52.651
 !MESSAGE 
 !STACK 1
 org.eclipse.core.internal.resources.ResourceException: Resource '/samplemaps/res' does not exist.
->>>>>>> 4d2e1cdcfb68abb34a4f77356fa367036f077cfb
 	at org.eclipse.core.internal.resources.Resource.checkExists(Resource.java:341)
 	at org.eclipse.core.internal.resources.Resource.checkAccessible(Resource.java:215)
 	at org.eclipse.core.internal.resources.Container.members(Container.java:266)
 	at org.eclipse.core.internal.resources.Container.members(Container.java:249)
 	at com.android.ide.eclipse.adt.internal.sdk.Sdk$6.run(Sdk.java:1306)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
-<<<<<<< HEAD
-!SUBENTRY 1 org.eclipse.core.resources 4 368 2013-03-19 01:41:28.662
-!MESSAGE Resource '/google-play-services_lib/res' does not exist.
-
-!ENTRY com.android.ide.eclipse.adt 4 0 2013-03-19 01:41:28.665
-!MESSAGE 
-!STACK 1
-org.eclipse.core.internal.resources.ResourceException: Resource '/samplemaps/res' does not exist.
-=======
-!SUBENTRY 1 org.eclipse.core.resources 4 368 2013-03-19 02:31:37.702
+!SUBENTRY 1 org.eclipse.core.resources 4 368 2013-03-19 02:41:52.652
 !MESSAGE Resource '/samplemaps/res' does not exist.
 
-!ENTRY com.android.ide.eclipse.adt 4 0 2013-03-19 02:31:37.705
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-03-19 02:41:52.655
 !MESSAGE 
 !STACK 1
 org.eclipse.core.internal.resources.ResourceException: Resource '/google-play-services_lib/res' does not exist.
->>>>>>> 4d2e1cdcfb68abb34a4f77356fa367036f077cfb
 	at org.eclipse.core.internal.resources.Resource.checkExists(Resource.java:341)
 	at org.eclipse.core.internal.resources.Resource.checkAccessible(Resource.java:215)
 	at org.eclipse.core.internal.resources.Container.members(Container.java:266)
 	at org.eclipse.core.internal.resources.Container.members(Container.java:249)
 	at com.android.ide.eclipse.adt.internal.sdk.Sdk$6.run(Sdk.java:1306)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
-<<<<<<< HEAD
-!SUBENTRY 1 org.eclipse.core.resources 4 368 2013-03-19 01:41:28.665
-!MESSAGE Resource '/samplemaps/res' does not exist.
-
-!ENTRY org.eclipse.egit.ui 2 0 2013-03-19 01:41:30.369
-!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
-user global configuration and to define the default location to store repositories: 'C:\Users\Tim'. If this is
-not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
-EGit might behave differently since they see different configuration options.
-This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
-!SESSION 2013-03-19 01:45:35.967 -----------------------------------------------
-eclipse.buildId=v21.1.0-569685
-java.version=1.7.0_05
-java.vendor=Oracle Corporation
-BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
-Framework arguments:  -product com.android.ide.eclipse.adt.package.product
-Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product com.android.ide.eclipse.adt.package.product
-
-!ENTRY org.eclipse.ui 4 4 2013-03-19 01:45:40.593
-!MESSAGE Could not create view: 'org.eclipse.ui.internal.introview'.
-
-!ENTRY org.eclipse.ui 4 0 2013-03-19 01:45:41.482
-!MESSAGE Problems occurred restoring workbench.
-!SUBENTRY 1 unknown 0 0 2013-03-19 01:45:41.482
-!MESSAGE OK
-!SUBENTRY 1 unknown 0 0 2013-03-19 01:45:41.482
-!MESSAGE OK
-!SUBENTRY 1 unknown 0 0 2013-03-19 01:45:41.482
-!MESSAGE OK
-!SUBENTRY 1 unknown 0 0 2013-03-19 01:45:41.482
-!MESSAGE OK
-!SUBENTRY 1 org.eclipse.ui 4 0 2013-03-19 01:45:41.482
-!MESSAGE Unable to restore perspective: Workspace - Java.
-!SUBENTRY 2 org.eclipse.ui 0 0 2013-03-19 01:45:41.482
-!MESSAGE Problems occurred restoring perspective.
-!SUBENTRY 3 org.eclipse.ui 0 0 2013-03-19 01:45:41.482
-!MESSAGE 
-!SUBENTRY 2 unknown 0 0 2013-03-19 01:45:41.483
-!MESSAGE OK
-!SUBENTRY 2 unknown 0 0 2013-03-19 01:45:41.483
-!MESSAGE OK
-!SUBENTRY 2 unknown 0 0 2013-03-19 01:45:41.483
-!MESSAGE OK
-!SUBENTRY 2 unknown 0 0 2013-03-19 01:45:41.483
-!MESSAGE OK
-!SUBENTRY 2 unknown 0 0 2013-03-19 01:45:41.483
-!MESSAGE OK
-!SUBENTRY 2 unknown 0 0 2013-03-19 01:45:41.483
-!MESSAGE OK
-!SUBENTRY 2 unknown 0 0 2013-03-19 01:45:41.483
-!MESSAGE OK
-!SUBENTRY 2 unknown 0 0 2013-03-19 01:45:41.483
-!MESSAGE OK
-!SUBENTRY 2 org.eclipse.ui 4 0 2013-03-19 01:45:41.483
-!MESSAGE Could not find view: org.eclipse.ui.internal.introview
-!SUBENTRY 1 unknown 0 0 2013-03-19 01:45:41.483
-!MESSAGE OK
-
-!ENTRY org.eclipse.egit.ui 2 0 2013-03-19 01:45:41.966
-=======
-!SUBENTRY 1 org.eclipse.core.resources 4 368 2013-03-19 02:31:37.705
+!SUBENTRY 1 org.eclipse.core.resources 4 368 2013-03-19 02:41:52.655
 !MESSAGE Resource '/google-play-services_lib/res' does not exist.
 
-!ENTRY org.eclipse.egit.ui 2 0 2013-03-19 02:31:39.074
->>>>>>> 4d2e1cdcfb68abb34a4f77356fa367036f077cfb
+!ENTRY org.eclipse.egit.ui 2 0 2013-03-19 02:41:54.035
 !MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
 user global configuration and to define the default location to store repositories: 'C:\Users\Tim'. If this is
 not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
