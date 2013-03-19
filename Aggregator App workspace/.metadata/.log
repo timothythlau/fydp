@@ -1,729 +1,60 @@
-!SESSION 2013-03-14 19:47:58.286 -----------------------------------------------
+!SESSION 2013-03-19 01:41:07.556 -----------------------------------------------
 eclipse.buildId=v21.1.0-569685
-java.version=1.7.0_10
+java.version=1.7.0_05
 java.vendor=Oracle Corporation
 BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
 Framework arguments:  -product com.android.ide.eclipse.adt.package.product
 Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product com.android.ide.eclipse.adt.package.product
 
-!ENTRY com.android.ide.eclipse.ddms 4 0 2013-03-14 19:49:58.477
-!MESSAGE DDMS files not found: C:\adt-bundle-windows-x86_64-20130219\eclipse\platform-tools\adb.exe C:\adt-bundle-windows-x86_64-20130219\eclipse\tools\hprof-conv.exe C:\adt-bundle-windows-x86_64-20130219\eclipse\tools\traceview.bat 
+!ENTRY com.android.ide.eclipse.ddms 4 0 2013-03-19 01:41:12.257
+!MESSAGE DDMS files not found: D:\adt-bundle-windows-x86_64-20130219\eclipse\platform-tools\adb.exe D:\adt-bundle-windows-x86_64-20130219\eclipse\tools\hprof-conv.exe D:\adt-bundle-windows-x86_64-20130219\eclipse\tools\traceview.bat 
 
-!ENTRY com.android.ide.eclipse.adt 4 0 2013-03-14 19:52:48.224
-!MESSAGE Failed to load properties file for project 'Aggregator'
-
-!ENTRY com.android.ide.eclipse.adt 4 0 2013-03-14 19:52:48.245
-!MESSAGE Failed to load properties file for project 'Aggregator'
-
-!ENTRY com.android.ide.eclipse.adt 4 0 2013-03-14 19:52:48.366
-!MESSAGE Failed to load properties file for project 'Aggregator'
-
-!ENTRY org.eclipse.egit.ui 2 0 2013-03-14 19:52:49.406
-!MESSAGE Warning: EGit couldn't detect the installation path "gitPrefix" of native Git. Hence EGit can't respect system level
-Git settings which might be configured in ${gitPrefix}/etc/gitconfig under the native Git installation directory.
-The most important of these settings is core.autocrlf. Git for Windows by default sets this parameter to true in
-this system level configuration. The Git installation location can be configured on the
-Team > Git > Configuration preference page's 'System Settings' tab.
-This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
-
-!ENTRY org.eclipse.egit.ui 2 0 2013-03-14 19:52:49.413
-!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
-user global configuration and to define the default location to store repositories: 'C:\Users\Tim'. If this is
-not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
-EGit might behave differently since they see different configuration options.
-This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
-
-!ENTRY com.android.ide.eclipse.adt 4 0 2013-03-14 19:52:52.026
-!MESSAGE Failed to load properties file for project 'samplemaps'
-
-!ENTRY com.android.ide.eclipse.adt 4 0 2013-03-14 19:52:52.036
-!MESSAGE Failed to load properties file for project 'samplemaps'
-
-!ENTRY com.android.ide.eclipse.adt 4 0 2013-03-14 19:52:54.519
-!MESSAGE Failed to load properties file for project 'samplemaps'
-
-!ENTRY com.android.ide.eclipse.adt 2 0 2013-03-14 22:39:35.187
-!MESSAGE custom_info_window.xml: Couldn't resolve resource @drawable/custom_info_bubble
-
-!ENTRY com.android.ide.eclipse.adt 4 0 2013-03-14 22:39:35.196
-!MESSAGE custom_info_window.xml: Failed to convert @drawable/custom_info_bubble into a drawable
-!STACK 0
-java.lang.NumberFormatException: Color value '@drawable/custom_info_bubble' must start with #
-	at com.android.layoutlib.bridge.impl.ResourceHelper.getColor(ResourceHelper.java:71)
-	at com.android.layoutlib.bridge.impl.ResourceHelper.getDrawable(ResourceHelper.java:248)
-	at android.content.res.BridgeTypedArray.getDrawable(BridgeTypedArray.java:782)
-	at android.view.View.<init>(View.java:3330)
-	at android.view.ViewGroup.<init>(ViewGroup.java:431)
-	at android.widget.LinearLayout.<init>(LinearLayout.java:176)
-	at android.widget.LinearLayout.<init>(LinearLayout.java:172)
-	at sun.reflect.GeneratedConstructorAccessor54.newInstance(Unknown Source)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
-	at java.lang.reflect.Constructor.newInstance(Unknown Source)
-	at android.view.LayoutInflater.createView(LayoutInflater.java:587)
-	at android.view.BridgeInflater.onCreateView(BridgeInflater.java:86)
-	at android.view.LayoutInflater.onCreateView(LayoutInflater.java:660)
-	at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:685)
-	at android.view.BridgeInflater.createViewFromTag(BridgeInflater.java:131)
-	at android.view.LayoutInflater.inflate(LayoutInflater.java:466)
-	at android.view.LayoutInflater.inflate(LayoutInflater.java:372)
-	at com.android.layoutlib.bridge.impl.RenderSessionImpl.inflate(RenderSessionImpl.java:385)
-	at com.android.layoutlib.bridge.Bridge.createSession(Bridge.java:332)
-	at com.android.ide.common.rendering.LayoutLibrary.createSession(LayoutLibrary.java:325)
-	at com.android.ide.eclipse.adt.internal.editors.layout.gle2.RenderService.createRenderSession(RenderService.java:440)
-	at com.android.ide.eclipse.adt.internal.editors.layout.gle2.GraphicalEditorPart.renderWithBridge(GraphicalEditorPart.java:1545)
-	at com.android.ide.eclipse.adt.internal.editors.layout.gle2.GraphicalEditorPart.recomputeLayout(GraphicalEditorPart.java:1302)
-	at com.android.ide.eclipse.adt.internal.editors.layout.gle2.GraphicalEditorPart.activated(GraphicalEditorPart.java:1059)
-	at com.android.ide.eclipse.adt.internal.editors.layout.LayoutEditorDelegate.delegatePageChange(LayoutEditorDelegate.java:686)
-	at com.android.ide.eclipse.adt.internal.editors.common.CommonXmlEditor.pageChange(CommonXmlEditor.java:360)
-	at org.eclipse.ui.part.MultiPageEditorPart$2.widgetSelected(MultiPageEditorPart.java:290)
-	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:248)
-	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
-	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1053)
-	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1077)
-	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1062)
-	at org.eclipse.swt.widgets.Widget.notifyListeners(Widget.java:774)
-	at org.eclipse.swt.custom.CTabFolder.setSelection(CTabFolder.java:2746)
-	at org.eclipse.swt.custom.CTabFolder.onMouse(CTabFolder.java:1433)
-	at org.eclipse.swt.custom.CTabFolder$1.handleEvent(CTabFolder.java:257)
-	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
-	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1053)
-	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4169)
-	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3758)
-	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2701)
-	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2665)
-	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2499)
-	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:679)
-	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
-	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:668)
-	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
-	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
-	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
-	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
-	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
-	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:353)
-	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:180)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-	at java.lang.reflect.Method.invoke(Unknown Source)
-	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:629)
-	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:584)
-	at org.eclipse.equinox.launcher.Main.run(Main.java:1438)
-	at org.eclipse.equinox.launcher.Main.main(Main.java:1414)
-
-!ENTRY com.android.ide.eclipse.adt 2 0 2013-03-14 22:39:37.383
-!MESSAGE custom_info_window.xml: Couldn't resolve resource @drawable/custom_info_bubble
-
-!ENTRY com.android.ide.eclipse.adt 4 0 2013-03-14 22:39:37.391
-!MESSAGE custom_info_window.xml: Failed to convert @drawable/custom_info_bubble into a drawable
-!STACK 0
-java.lang.NumberFormatException: Color value '@drawable/custom_info_bubble' must start with #
-	at com.android.layoutlib.bridge.impl.ResourceHelper.getColor(ResourceHelper.java:71)
-	at com.android.layoutlib.bridge.impl.ResourceHelper.getDrawable(ResourceHelper.java:248)
-	at android.content.res.BridgeTypedArray.getDrawable(BridgeTypedArray.java:782)
-	at android.view.View.<init>(View.java:3330)
-	at android.view.ViewGroup.<init>(ViewGroup.java:431)
-	at android.widget.LinearLayout.<init>(LinearLayout.java:176)
-	at android.widget.LinearLayout.<init>(LinearLayout.java:172)
-	at sun.reflect.GeneratedConstructorAccessor54.newInstance(Unknown Source)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
-	at java.lang.reflect.Constructor.newInstance(Unknown Source)
-	at android.view.LayoutInflater.createView(LayoutInflater.java:587)
-	at android.view.BridgeInflater.onCreateView(BridgeInflater.java:86)
-	at android.view.LayoutInflater.onCreateView(LayoutInflater.java:660)
-	at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:685)
-	at android.view.BridgeInflater.createViewFromTag(BridgeInflater.java:131)
-	at android.view.LayoutInflater.inflate(LayoutInflater.java:466)
-	at android.view.LayoutInflater.inflate(LayoutInflater.java:372)
-	at com.android.layoutlib.bridge.impl.RenderSessionImpl.inflate(RenderSessionImpl.java:385)
-	at com.android.layoutlib.bridge.Bridge.createSession(Bridge.java:332)
-	at com.android.ide.common.rendering.LayoutLibrary.createSession(LayoutLibrary.java:325)
-	at com.android.ide.eclipse.adt.internal.editors.layout.gle2.RenderService.createRenderSession(RenderService.java:440)
-	at com.android.ide.eclipse.adt.internal.editors.layout.gle2.GraphicalEditorPart.renderWithBridge(GraphicalEditorPart.java:1545)
-	at com.android.ide.eclipse.adt.internal.editors.layout.gle2.GraphicalEditorPart.recomputeLayout(GraphicalEditorPart.java:1302)
-	at com.android.ide.eclipse.adt.internal.editors.layout.LayoutEditorDelegate.recomputeLayout(LayoutEditorDelegate.java:410)
-	at com.android.ide.eclipse.adt.internal.editors.layout.gle2.SelectionManager.selectSingle(SelectionManager.java:487)
-	at com.android.ide.eclipse.adt.internal.editors.layout.gle2.SelectionManager.select(SelectionManager.java:442)
-	at com.android.ide.eclipse.adt.internal.editors.layout.gle2.GestureManager$Listener.mouseUp(GestureManager.java:477)
-	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:220)
-	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
-	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1053)
-	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4169)
-	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3758)
-	at org.eclipse.ui.internal.Workbench.runEventLoop(Workbench.java:2701)
-	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2665)
-	at org.eclipse.ui.internal.Workbench.access$4(Workbench.java:2499)
-	at org.eclipse.ui.internal.Workbench$7.run(Workbench.java:679)
-	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
-	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:668)
-	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
-	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
-	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
-	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
-	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
-	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:353)
-	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:180)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-	at java.lang.reflect.Method.invoke(Unknown Source)
-	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:629)
-	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:584)
-	at org.eclipse.equinox.launcher.Main.run(Main.java:1438)
-	at org.eclipse.equinox.launcher.Main.main(Main.java:1414)
-
-!ENTRY org.eclipse.core.resources 4 2 2013-03-15 00:40:48.470
-!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.core.resources".
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-03-19 01:41:28.658
+!MESSAGE 
 !STACK 1
-org.eclipse.core.internal.resources.ResourceException: Problems encountered while deleting resources.
-	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:817)
-	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:770)
-	at com.android.ide.eclipse.adt.internal.build.builders.PostCompilerBuilder.clean(PostCompilerBuilder.java:156)
-	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:730)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
-	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
-	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
-	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
-	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
-	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:422)
-	at org.eclipse.ui.internal.ide.dialogs.CleanDialog.doClean(CleanDialog.java:313)
-	at org.eclipse.ui.internal.ide.dialogs.CleanDialog$1.runInWorkspace(CleanDialog.java:151)
-	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+org.eclipse.core.internal.resources.ResourceException: Resource '/Aggregator/res' does not exist.
+	at org.eclipse.core.internal.resources.Resource.checkExists(Resource.java:341)
+	at org.eclipse.core.internal.resources.Resource.checkAccessible(Resource.java:215)
+	at org.eclipse.core.internal.resources.Container.members(Container.java:266)
+	at org.eclipse.core.internal.resources.Container.members(Container.java:249)
+	at com.android.ide.eclipse.adt.internal.sdk.Sdk$6.run(Sdk.java:1306)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
-Contains: Could not delete 'C:\Users\Tim\workspace\google-play-services_lib\bin\google-play-services_lib.jar'.
-org.eclipse.core.runtime.CoreException: Problems encountered while deleting files.
-	at org.eclipse.core.internal.filesystem.local.LocalFile.delete(LocalFile.java:125)
-	at org.eclipse.core.internal.resources.ResourceTree.internalDeleteFile(ResourceTree.java:304)
-	at org.eclipse.core.internal.resources.ResourceTree.standardDeleteFile(ResourceTree.java:785)
-	at org.eclipse.core.internal.resources.Resource.unprotectedDelete(Resource.java:1974)
-	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:804)
-	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:770)
-	at com.android.ide.eclipse.adt.internal.build.builders.PostCompilerBuilder.clean(PostCompilerBuilder.java:156)
-	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:730)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
-	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
-	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
-	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
-	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
-	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:422)
-	at org.eclipse.ui.internal.ide.dialogs.CleanDialog.doClean(CleanDialog.java:313)
-	at org.eclipse.ui.internal.ide.dialogs.CleanDialog$1.runInWorkspace(CleanDialog.java:151)
-	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
-Contains: Could not delete: C:\Users\Tim\workspace\google-play-services_lib\bin\google-play-services_lib.jar.
-!SUBENTRY 1 org.eclipse.core.resources 4 273 2013-03-15 00:40:48.484
-!MESSAGE Problems encountered while deleting resources.
-!SUBENTRY 2 org.eclipse.core.resources 4 273 2013-03-15 00:40:48.484
-!MESSAGE Could not delete 'C:\Users\Tim\workspace\google-play-services_lib\bin\google-play-services_lib.jar'.
+!SUBENTRY 1 org.eclipse.core.resources 4 368 2013-03-19 01:41:28.659
+!MESSAGE Resource '/Aggregator/res' does not exist.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-03-19 01:41:28.662
+!MESSAGE 
 !STACK 1
-org.eclipse.core.runtime.CoreException: Problems encountered while deleting files.
-	at org.eclipse.core.internal.filesystem.local.LocalFile.delete(LocalFile.java:125)
-	at org.eclipse.core.internal.resources.ResourceTree.internalDeleteFile(ResourceTree.java:304)
-	at org.eclipse.core.internal.resources.ResourceTree.standardDeleteFile(ResourceTree.java:785)
-	at org.eclipse.core.internal.resources.Resource.unprotectedDelete(Resource.java:1974)
-	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:804)
-	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:770)
-	at com.android.ide.eclipse.adt.internal.build.builders.PostCompilerBuilder.clean(PostCompilerBuilder.java:156)
-	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:730)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
-	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
-	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
-	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
-	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
-	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:422)
-	at org.eclipse.ui.internal.ide.dialogs.CleanDialog.doClean(CleanDialog.java:313)
-	at org.eclipse.ui.internal.ide.dialogs.CleanDialog$1.runInWorkspace(CleanDialog.java:151)
-	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+org.eclipse.core.internal.resources.ResourceException: Resource '/google-play-services_lib/res' does not exist.
+	at org.eclipse.core.internal.resources.Resource.checkExists(Resource.java:341)
+	at org.eclipse.core.internal.resources.Resource.checkAccessible(Resource.java:215)
+	at org.eclipse.core.internal.resources.Container.members(Container.java:266)
+	at org.eclipse.core.internal.resources.Container.members(Container.java:249)
+	at com.android.ide.eclipse.adt.internal.sdk.Sdk$6.run(Sdk.java:1306)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
-Contains: Could not delete: C:\Users\Tim\workspace\google-play-services_lib\bin\google-play-services_lib.jar.
-!SUBENTRY 3 org.eclipse.core.filesystem 4 273 2013-03-15 00:40:48.485
-!MESSAGE Problems encountered while deleting files.
-!SUBENTRY 4 org.eclipse.core.filesystem 4 273 2013-03-15 00:40:48.485
-!MESSAGE Could not delete: C:\Users\Tim\workspace\google-play-services_lib\bin\google-play-services_lib.jar.
-!SUBENTRY 1 org.eclipse.core.resources 4 273 2013-03-15 00:40:48.485
-!MESSAGE Could not delete 'C:\Users\Tim\workspace\google-play-services_lib\bin\google-play-services_lib.jar'.
+!SUBENTRY 1 org.eclipse.core.resources 4 368 2013-03-19 01:41:28.662
+!MESSAGE Resource '/google-play-services_lib/res' does not exist.
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-03-19 01:41:28.665
+!MESSAGE 
 !STACK 1
-org.eclipse.core.runtime.CoreException: Problems encountered while deleting files.
-	at org.eclipse.core.internal.filesystem.local.LocalFile.delete(LocalFile.java:125)
-	at org.eclipse.core.internal.resources.ResourceTree.internalDeleteFile(ResourceTree.java:304)
-	at org.eclipse.core.internal.resources.ResourceTree.standardDeleteFile(ResourceTree.java:785)
-	at org.eclipse.core.internal.resources.Resource.unprotectedDelete(Resource.java:1974)
-	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:804)
-	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:770)
-	at com.android.ide.eclipse.adt.internal.build.builders.PostCompilerBuilder.clean(PostCompilerBuilder.java:156)
-	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:730)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
-	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
-	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
-	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
-	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
-	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:422)
-	at org.eclipse.ui.internal.ide.dialogs.CleanDialog.doClean(CleanDialog.java:313)
-	at org.eclipse.ui.internal.ide.dialogs.CleanDialog$1.runInWorkspace(CleanDialog.java:151)
-	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+org.eclipse.core.internal.resources.ResourceException: Resource '/samplemaps/res' does not exist.
+	at org.eclipse.core.internal.resources.Resource.checkExists(Resource.java:341)
+	at org.eclipse.core.internal.resources.Resource.checkAccessible(Resource.java:215)
+	at org.eclipse.core.internal.resources.Container.members(Container.java:266)
+	at org.eclipse.core.internal.resources.Container.members(Container.java:249)
+	at com.android.ide.eclipse.adt.internal.sdk.Sdk$6.run(Sdk.java:1306)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
-Contains: Could not delete: C:\Users\Tim\workspace\google-play-services_lib\bin\google-play-services_lib.jar.
-!SUBENTRY 2 org.eclipse.core.filesystem 4 273 2013-03-15 00:40:48.485
-!MESSAGE Problems encountered while deleting files.
-!SUBENTRY 3 org.eclipse.core.filesystem 4 273 2013-03-15 00:40:48.485
-!MESSAGE Could not delete: C:\Users\Tim\workspace\google-play-services_lib\bin\google-play-services_lib.jar.
+!SUBENTRY 1 org.eclipse.core.resources 4 368 2013-03-19 01:41:28.665
+!MESSAGE Resource '/samplemaps/res' does not exist.
 
-!ENTRY org.eclipse.core.resources 4 75 2013-03-15 00:40:48.664
-!MESSAGE Errors occurred during the build.
-!SUBENTRY 1 com.android.ide.eclipse.adt 4 75 2013-03-15 00:40:48.664
-!MESSAGE Errors running builder 'Android Package Builder' on project 'google-play-services_lib'.
-!STACK 1
-org.eclipse.core.internal.resources.ResourceException: Problems encountered while deleting resources.
-	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:817)
-	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:770)
-	at com.android.ide.eclipse.adt.internal.build.builders.PostCompilerBuilder.clean(PostCompilerBuilder.java:156)
-	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:730)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
-	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
-	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
-	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
-	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
-	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:422)
-	at org.eclipse.ui.internal.ide.dialogs.CleanDialog.doClean(CleanDialog.java:313)
-	at org.eclipse.ui.internal.ide.dialogs.CleanDialog$1.runInWorkspace(CleanDialog.java:151)
-	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
-Contains: Could not delete 'C:\Users\Tim\workspace\google-play-services_lib\bin\google-play-services_lib.jar'.
-org.eclipse.core.runtime.CoreException: Problems encountered while deleting files.
-	at org.eclipse.core.internal.filesystem.local.LocalFile.delete(LocalFile.java:125)
-	at org.eclipse.core.internal.resources.ResourceTree.internalDeleteFile(ResourceTree.java:304)
-	at org.eclipse.core.internal.resources.ResourceTree.standardDeleteFile(ResourceTree.java:785)
-	at org.eclipse.core.internal.resources.Resource.unprotectedDelete(Resource.java:1974)
-	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:804)
-	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:770)
-	at com.android.ide.eclipse.adt.internal.build.builders.PostCompilerBuilder.clean(PostCompilerBuilder.java:156)
-	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:730)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
-	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
-	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
-	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
-	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
-	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:422)
-	at org.eclipse.ui.internal.ide.dialogs.CleanDialog.doClean(CleanDialog.java:313)
-	at org.eclipse.ui.internal.ide.dialogs.CleanDialog$1.runInWorkspace(CleanDialog.java:151)
-	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
-Contains: Could not delete: C:\Users\Tim\workspace\google-play-services_lib\bin\google-play-services_lib.jar.
-!SUBENTRY 2 org.eclipse.core.resources 4 273 2013-03-15 00:40:48.664
-!MESSAGE Problems encountered while deleting resources.
-!SUBENTRY 3 org.eclipse.core.resources 4 273 2013-03-15 00:40:48.664
-!MESSAGE Could not delete 'C:\Users\Tim\workspace\google-play-services_lib\bin\google-play-services_lib.jar'.
-!STACK 1
-org.eclipse.core.runtime.CoreException: Problems encountered while deleting files.
-	at org.eclipse.core.internal.filesystem.local.LocalFile.delete(LocalFile.java:125)
-	at org.eclipse.core.internal.resources.ResourceTree.internalDeleteFile(ResourceTree.java:304)
-	at org.eclipse.core.internal.resources.ResourceTree.standardDeleteFile(ResourceTree.java:785)
-	at org.eclipse.core.internal.resources.Resource.unprotectedDelete(Resource.java:1974)
-	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:804)
-	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:770)
-	at com.android.ide.eclipse.adt.internal.build.builders.PostCompilerBuilder.clean(PostCompilerBuilder.java:156)
-	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:730)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
-	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
-	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
-	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
-	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
-	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:422)
-	at org.eclipse.ui.internal.ide.dialogs.CleanDialog.doClean(CleanDialog.java:313)
-	at org.eclipse.ui.internal.ide.dialogs.CleanDialog$1.runInWorkspace(CleanDialog.java:151)
-	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
-Contains: Could not delete: C:\Users\Tim\workspace\google-play-services_lib\bin\google-play-services_lib.jar.
-!SUBENTRY 4 org.eclipse.core.filesystem 4 273 2013-03-15 00:40:48.665
-!MESSAGE Problems encountered while deleting files.
-!SUBENTRY 5 org.eclipse.core.filesystem 4 273 2013-03-15 00:40:48.665
-!MESSAGE Could not delete: C:\Users\Tim\workspace\google-play-services_lib\bin\google-play-services_lib.jar.
-!SUBENTRY 1 org.eclipse.core.resources 4 273 2013-03-15 00:40:48.665
-!MESSAGE Problems encountered while deleting resources.
-!SUBENTRY 2 org.eclipse.core.resources 4 273 2013-03-15 00:40:48.665
-!MESSAGE Could not delete 'C:\Users\Tim\workspace\google-play-services_lib\bin\google-play-services_lib.jar'.
-!STACK 1
-org.eclipse.core.runtime.CoreException: Problems encountered while deleting files.
-	at org.eclipse.core.internal.filesystem.local.LocalFile.delete(LocalFile.java:125)
-	at org.eclipse.core.internal.resources.ResourceTree.internalDeleteFile(ResourceTree.java:304)
-	at org.eclipse.core.internal.resources.ResourceTree.standardDeleteFile(ResourceTree.java:785)
-	at org.eclipse.core.internal.resources.Resource.unprotectedDelete(Resource.java:1974)
-	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:804)
-	at org.eclipse.core.internal.resources.Resource.delete(Resource.java:770)
-	at com.android.ide.eclipse.adt.internal.build.builders.PostCompilerBuilder.clean(PostCompilerBuilder.java:156)
-	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:730)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
-	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
-	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
-	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
-	at org.eclipse.core.internal.resources.Workspace.buildInternal(Workspace.java:513)
-	at org.eclipse.core.internal.resources.Workspace.build(Workspace.java:422)
-	at org.eclipse.ui.internal.ide.dialogs.CleanDialog.doClean(CleanDialog.java:313)
-	at org.eclipse.ui.internal.ide.dialogs.CleanDialog$1.runInWorkspace(CleanDialog.java:151)
-	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
-Contains: Could not delete: C:\Users\Tim\workspace\google-play-services_lib\bin\google-play-services_lib.jar.
-!SUBENTRY 3 org.eclipse.core.filesystem 4 273 2013-03-15 00:40:48.666
-!MESSAGE Problems encountered while deleting files.
-!SUBENTRY 4 org.eclipse.core.filesystem 4 273 2013-03-15 00:40:48.666
-!MESSAGE Could not delete: C:\Users\Tim\workspace\google-play-services_lib\bin\google-play-services_lib.jar.
-!SESSION 2013-03-16 16:15:11.546 -----------------------------------------------
-eclipse.buildId=I20120608-1400
-java.version=1.7.0_05
-java.vendor=Oracle Corporation
-BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
-Command-line arguments:  -os win32 -ws win32 -arch x86_64
-
-!ENTRY org.eclipse.ui.ide 4 4 2013-03-16 16:15:28.434
-!MESSAGE File toolbar contribution item is missing
-
-!ENTRY org.eclipse.ui 4 4 2013-03-16 16:15:28.802
-!MESSAGE Unable to find Action Set: org.eclipse.mylyn.context.ui.actionSet
-
-!ENTRY org.eclipse.ui 4 4 2013-03-16 16:15:28.804
-!MESSAGE Unable to find Action Set: org.eclipse.mylyn.doc.actionSet
-
-!ENTRY org.eclipse.ui 4 4 2013-03-16 16:15:28.806
-!MESSAGE Unable to find Action Set: org.eclipse.mylyn.tasks.ui.navigation
-
-!ENTRY org.eclipse.ui 4 4 2013-03-16 16:15:28.808
-!MESSAGE Unable to find Action Set: org.eclipse.wb.core.ui.actionset
-
-!ENTRY org.eclipse.jface 4 0 2013-03-16 16:15:29.629
-!MESSAGE Unable to resolve plug-in "platform:/plugin/org.eclipse.mylyn.tasks.ui/icons/eview16/task-list.gif".
-!STACK 0
-java.io.IOException: Unable to resolve plug-in "platform:/plugin/org.eclipse.mylyn.tasks.ui/icons/eview16/task-list.gif".
-	at org.eclipse.core.internal.runtime.PlatformURLPluginConnection.parse(PlatformURLPluginConnection.java:64)
-	at org.eclipse.core.internal.runtime.PlatformURLPluginConnection.resolve(PlatformURLPluginConnection.java:75)
-	at org.eclipse.core.internal.boot.PlatformURLHandler.openConnection(PlatformURLHandler.java:67)
-	at org.eclipse.osgi.framework.internal.protocol.URLStreamHandlerProxy.openConnection(URLStreamHandlerProxy.java:112)
-	at java.net.URL.openConnection(Unknown Source)
-	at org.eclipse.core.internal.runtime.PlatformURLConverter.toFileURL(PlatformURLConverter.java:33)
-	at org.eclipse.core.runtime.FileLocator.toFileURL(FileLocator.java:206)
-	at org.eclipse.jface.resource.URLImageDescriptor.getFilePath(URLImageDescriptor.java:137)
-	at org.eclipse.jface.resource.URLImageDescriptor.createImage(URLImageDescriptor.java:157)
-	at org.eclipse.jface.resource.ImageDescriptor.createImage(ImageDescriptor.java:227)
-	at org.eclipse.jface.resource.ImageDescriptor.createImage(ImageDescriptor.java:205)
-	at org.eclipse.e4.ui.workbench.renderers.swt.SWTPartRenderer.getImage(SWTPartRenderer.java:178)
-	at org.eclipse.e4.ui.workbench.renderers.swt.StackRenderer.createTab(StackRenderer.java:731)
-	at org.eclipse.e4.ui.workbench.renderers.swt.LazyStackRenderer.processContents(LazyStackRenderer.java:134)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:635)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:725)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.access$2(PartRenderingEngine.java:696)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$7.run(PartRenderingEngine.java:690)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createGui(PartRenderingEngine.java:675)
-	at org.eclipse.e4.ui.workbench.renderers.swt.SWTPartRenderer.processContents(SWTPartRenderer.java:59)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:635)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:725)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.access$2(PartRenderingEngine.java:696)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$7.run(PartRenderingEngine.java:690)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createGui(PartRenderingEngine.java:675)
-	at org.eclipse.e4.ui.workbench.renderers.swt.SWTPartRenderer.processContents(SWTPartRenderer.java:59)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:635)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:725)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.access$2(PartRenderingEngine.java:696)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$7.run(PartRenderingEngine.java:690)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createGui(PartRenderingEngine.java:675)
-	at org.eclipse.e4.ui.workbench.renderers.swt.SWTPartRenderer.processContents(SWTPartRenderer.java:59)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:635)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:725)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.access$2(PartRenderingEngine.java:696)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$7.run(PartRenderingEngine.java:690)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createGui(PartRenderingEngine.java:675)
-	at org.eclipse.e4.ui.workbench.renderers.swt.SWTPartRenderer.processContents(SWTPartRenderer.java:59)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:635)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:725)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.access$2(PartRenderingEngine.java:696)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$7.run(PartRenderingEngine.java:690)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createGui(PartRenderingEngine.java:675)
-	at org.eclipse.e4.ui.workbench.renderers.swt.SWTPartRenderer.processContents(SWTPartRenderer.java:59)
-	at org.eclipse.e4.ui.workbench.renderers.swt.PerspectiveRenderer.processContents(PerspectiveRenderer.java:59)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:635)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:725)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.access$2(PartRenderingEngine.java:696)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$7.run(PartRenderingEngine.java:690)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createGui(PartRenderingEngine.java:675)
-	at org.eclipse.e4.ui.workbench.renderers.swt.PerspectiveStackRenderer.showTab(PerspectiveStackRenderer.java:103)
-	at org.eclipse.e4.ui.workbench.renderers.swt.LazyStackRenderer.postProcess(LazyStackRenderer.java:98)
-	at org.eclipse.e4.ui.workbench.renderers.swt.PerspectiveStackRenderer.postProcess(PerspectiveStackRenderer.java:77)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:639)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:725)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.access$2(PartRenderingEngine.java:696)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$7.run(PartRenderingEngine.java:690)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createGui(PartRenderingEngine.java:675)
-	at org.eclipse.e4.ui.workbench.renderers.swt.SWTPartRenderer.processContents(SWTPartRenderer.java:59)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:635)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:725)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.access$2(PartRenderingEngine.java:696)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$7.run(PartRenderingEngine.java:690)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createGui(PartRenderingEngine.java:675)
-	at org.eclipse.e4.ui.workbench.renderers.swt.SWTPartRenderer.processContents(SWTPartRenderer.java:59)
-	at org.eclipse.e4.ui.workbench.renderers.swt.WBWRenderer.processContents(WBWRenderer.java:626)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:635)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:725)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.access$2(PartRenderingEngine.java:696)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$7.run(PartRenderingEngine.java:690)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createGui(PartRenderingEngine.java:675)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$9.run(PartRenderingEngine.java:961)
-	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:916)
-	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:86)
-	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:585)
-	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
-	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:540)
-	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
-	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
-	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
-	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
-	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
-	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:353)
-	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:180)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-	at java.lang.reflect.Method.invoke(Unknown Source)
-	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:629)
-	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:584)
-	at org.eclipse.equinox.launcher.Main.run(Main.java:1438)
-	at org.eclipse.equinox.launcher.Main.main(Main.java:1414)
-
-!ENTRY org.eclipse.ui 4 0 2013-03-16 16:15:29.916
-!MESSAGE Unhandled event loop exception
-!STACK 0
-java.lang.ArithmeticException: / by zero
-	at org.eclipse.e4.ui.workbench.renderers.swt.TrimBarLayout.tileLine(TrimBarLayout.java:234)
-	at org.eclipse.e4.ui.workbench.renderers.swt.TrimBarLayout.layout(TrimBarLayout.java:210)
-	at org.eclipse.swt.widgets.Composite.updateLayout(Composite.java:1263)
-	at org.eclipse.swt.widgets.Composite.WM_SIZE(Composite.java:1673)
-	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4603)
-	at org.eclipse.swt.widgets.Display.windowProc(Display.java:4976)
-	at org.eclipse.swt.internal.win32.OS.DefWindowProcW(Native Method)
-	at org.eclipse.swt.internal.win32.OS.DefWindowProc(OS.java:2541)
-	at org.eclipse.swt.widgets.Scrollable.callWindowProc(Scrollable.java:80)
-	at org.eclipse.swt.widgets.Control.WM_WINDOWPOSCHANGED(Control.java:5408)
-	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4616)
-	at org.eclipse.swt.widgets.Display.windowProc(Display.java:4989)
-	at org.eclipse.swt.internal.win32.OS.EndDeferWindowPos(Native Method)
-	at org.eclipse.swt.widgets.Composite.resizeChildren(Composite.java:949)
-	at org.eclipse.swt.widgets.Composite.resizeChildren(Composite.java:915)
-	at org.eclipse.swt.widgets.Composite.setResizeChildren(Composite.java:1126)
-	at org.eclipse.swt.widgets.Composite.updateLayout(Composite.java:1264)
-	at org.eclipse.swt.widgets.Composite.updateLayout(Composite.java:1249)
-	at org.eclipse.swt.widgets.Composite.setLayoutDeferred(Composite.java:1086)
-	at org.eclipse.swt.widgets.Display.runDeferredLayouts(Display.java:4193)
-	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3751)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$9.run(PartRenderingEngine.java:1022)
-	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:916)
-	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:86)
-	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:585)
-	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
-	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:540)
-	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
-	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
-	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
-	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
-	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
-	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:353)
-	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:180)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-	at java.lang.reflect.Method.invoke(Unknown Source)
-	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:629)
-	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:584)
-	at org.eclipse.equinox.launcher.Main.run(Main.java:1438)
-	at org.eclipse.equinox.launcher.Main.main(Main.java:1414)
-
-!ENTRY org.eclipse.ui 2 2 2013-03-16 16:16:38.883
-!MESSAGE Invalid property category path: ValidationPropertiesPage (bundle: org.eclipse.wst.xml.ui, propertyPage: org.eclipse.wst.xml.ui.propertyPage.project.validation)
-!SESSION 2013-03-16 16:16:43.673 -----------------------------------------------
-eclipse.buildId=I20120608-1400
-java.version=1.7.0_05
-java.vendor=Oracle Corporation
-BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
-Command-line arguments:  -os win32 -ws win32 -arch x86_64
-
-!ENTRY org.eclipse.core.resources 2 10035 2013-03-16 16:16:46.398
-!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
-
-!ENTRY org.eclipse.ui 4 4 2013-03-16 16:16:48.556
-!MESSAGE Unable to find Action Set: org.eclipse.mylyn.context.ui.actionSet
-
-!ENTRY org.eclipse.ui 4 4 2013-03-16 16:16:48.564
-!MESSAGE Unable to find Action Set: org.eclipse.mylyn.doc.actionSet
-
-!ENTRY org.eclipse.ui 4 4 2013-03-16 16:16:48.566
-!MESSAGE Unable to find Action Set: org.eclipse.mylyn.tasks.ui.navigation
-
-!ENTRY org.eclipse.ui 4 4 2013-03-16 16:16:48.568
-!MESSAGE Unable to find Action Set: org.eclipse.wb.core.ui.actionset
-
-!ENTRY org.eclipse.jface 4 0 2013-03-16 16:16:49.352
-!MESSAGE Unable to resolve plug-in "platform:/plugin/org.eclipse.mylyn.tasks.ui/icons/eview16/task-list.gif".
-!STACK 0
-java.io.IOException: Unable to resolve plug-in "platform:/plugin/org.eclipse.mylyn.tasks.ui/icons/eview16/task-list.gif".
-	at org.eclipse.core.internal.runtime.PlatformURLPluginConnection.parse(PlatformURLPluginConnection.java:64)
-	at org.eclipse.core.internal.runtime.PlatformURLPluginConnection.resolve(PlatformURLPluginConnection.java:75)
-	at org.eclipse.core.internal.boot.PlatformURLHandler.openConnection(PlatformURLHandler.java:67)
-	at org.eclipse.osgi.framework.internal.protocol.URLStreamHandlerProxy.openConnection(URLStreamHandlerProxy.java:112)
-	at java.net.URL.openConnection(Unknown Source)
-	at org.eclipse.core.internal.runtime.PlatformURLConverter.toFileURL(PlatformURLConverter.java:33)
-	at org.eclipse.core.runtime.FileLocator.toFileURL(FileLocator.java:206)
-	at org.eclipse.jface.resource.URLImageDescriptor.getFilePath(URLImageDescriptor.java:137)
-	at org.eclipse.jface.resource.URLImageDescriptor.createImage(URLImageDescriptor.java:157)
-	at org.eclipse.jface.resource.ImageDescriptor.createImage(ImageDescriptor.java:227)
-	at org.eclipse.jface.resource.ImageDescriptor.createImage(ImageDescriptor.java:205)
-	at org.eclipse.e4.ui.workbench.renderers.swt.SWTPartRenderer.getImage(SWTPartRenderer.java:178)
-	at org.eclipse.e4.ui.workbench.renderers.swt.StackRenderer.createTab(StackRenderer.java:731)
-	at org.eclipse.e4.ui.workbench.renderers.swt.LazyStackRenderer.processContents(LazyStackRenderer.java:134)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:635)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:725)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.access$2(PartRenderingEngine.java:696)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$7.run(PartRenderingEngine.java:690)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createGui(PartRenderingEngine.java:675)
-	at org.eclipse.e4.ui.workbench.renderers.swt.SWTPartRenderer.processContents(SWTPartRenderer.java:59)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:635)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:725)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.access$2(PartRenderingEngine.java:696)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$7.run(PartRenderingEngine.java:690)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createGui(PartRenderingEngine.java:675)
-	at org.eclipse.e4.ui.workbench.renderers.swt.SWTPartRenderer.processContents(SWTPartRenderer.java:59)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:635)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:725)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.access$2(PartRenderingEngine.java:696)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$7.run(PartRenderingEngine.java:690)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createGui(PartRenderingEngine.java:675)
-	at org.eclipse.e4.ui.workbench.renderers.swt.SWTPartRenderer.processContents(SWTPartRenderer.java:59)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:635)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:725)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.access$2(PartRenderingEngine.java:696)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$7.run(PartRenderingEngine.java:690)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createGui(PartRenderingEngine.java:675)
-	at org.eclipse.e4.ui.workbench.renderers.swt.SWTPartRenderer.processContents(SWTPartRenderer.java:59)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:635)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:725)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.access$2(PartRenderingEngine.java:696)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$7.run(PartRenderingEngine.java:690)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createGui(PartRenderingEngine.java:675)
-	at org.eclipse.e4.ui.workbench.renderers.swt.SWTPartRenderer.processContents(SWTPartRenderer.java:59)
-	at org.eclipse.e4.ui.workbench.renderers.swt.PerspectiveRenderer.processContents(PerspectiveRenderer.java:59)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:635)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:725)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.access$2(PartRenderingEngine.java:696)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$7.run(PartRenderingEngine.java:690)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createGui(PartRenderingEngine.java:675)
-	at org.eclipse.e4.ui.workbench.renderers.swt.PerspectiveStackRenderer.showTab(PerspectiveStackRenderer.java:103)
-	at org.eclipse.e4.ui.workbench.renderers.swt.LazyStackRenderer.postProcess(LazyStackRenderer.java:98)
-	at org.eclipse.e4.ui.workbench.renderers.swt.PerspectiveStackRenderer.postProcess(PerspectiveStackRenderer.java:77)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:639)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:725)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.access$2(PartRenderingEngine.java:696)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$7.run(PartRenderingEngine.java:690)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createGui(PartRenderingEngine.java:675)
-	at org.eclipse.e4.ui.workbench.renderers.swt.SWTPartRenderer.processContents(SWTPartRenderer.java:59)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:635)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:725)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.access$2(PartRenderingEngine.java:696)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$7.run(PartRenderingEngine.java:690)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createGui(PartRenderingEngine.java:675)
-	at org.eclipse.e4.ui.workbench.renderers.swt.SWTPartRenderer.processContents(SWTPartRenderer.java:59)
-	at org.eclipse.e4.ui.workbench.renderers.swt.WBWRenderer.processContents(WBWRenderer.java:626)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:635)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:725)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.access$2(PartRenderingEngine.java:696)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$7.run(PartRenderingEngine.java:690)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createGui(PartRenderingEngine.java:675)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$9.run(PartRenderingEngine.java:961)
-	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
-	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:916)
-	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:86)
-	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:585)
-	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
-	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:540)
-	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:149)
-	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:124)
-	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
-	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:110)
-	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:79)
-	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:353)
-	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:180)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-	at java.lang.reflect.Method.invoke(Unknown Source)
-	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:629)
-	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:584)
-	at org.eclipse.equinox.launcher.Main.run(Main.java:1438)
-	at org.eclipse.equinox.launcher.Main.main(Main.java:1414)
-
-!ENTRY org.eclipse.ui 2 2 2013-03-16 16:17:31.261
-!MESSAGE Invalid property category path: ValidationPropertiesPage (bundle: org.eclipse.wst.xml.ui, propertyPage: org.eclipse.wst.xml.ui.propertyPage.project.validation)
-!SESSION 2013-03-16 16:19:59.454 -----------------------------------------------
-eclipse.buildId=v21.1.0-569685
-java.version=1.7.0_05
-java.vendor=Oracle Corporation
-BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
-Framework arguments:  -product com.android.ide.eclipse.adt.package.product
-Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product com.android.ide.eclipse.adt.package.product
-
-!ENTRY org.eclipse.egit.ui 2 0 2013-03-16 16:20:18.431
+!ENTRY org.eclipse.egit.ui 2 0 2013-03-19 01:41:30.369
 !MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
 user global configuration and to define the default location to store repositories: 'C:\Users\Tim'. If this is
 not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
 EGit might behave differently since they see different configuration options.
 This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
-!SESSION 2013-03-16 16:21:41.988 -----------------------------------------------
+!SESSION 2013-03-19 01:45:35.967 -----------------------------------------------
 eclipse.buildId=v21.1.0-569685
 java.version=1.7.0_05
 java.vendor=Oracle Corporation
@@ -731,205 +62,47 @@ BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
 Framework arguments:  -product com.android.ide.eclipse.adt.package.product
 Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product com.android.ide.eclipse.adt.package.product
 
-!ENTRY org.eclipse.egit.ui 2 0 2013-03-16 16:21:47.750
-!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
-user global configuration and to define the default location to store repositories: 'C:\Users\Tim'. If this is
-not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
-EGit might behave differently since they see different configuration options.
-This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
-!SESSION 2013-03-16 16:25:13.661 -----------------------------------------------
-eclipse.buildId=v21.1.0-569685
-java.version=1.7.0_05
-java.vendor=Oracle Corporation
-BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
-Framework arguments:  -product com.android.ide.eclipse.adt.package.product
-Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product com.android.ide.eclipse.adt.package.product
+!ENTRY org.eclipse.ui 4 4 2013-03-19 01:45:40.593
+!MESSAGE Could not create view: 'org.eclipse.ui.internal.introview'.
 
-!ENTRY org.eclipse.egit.ui 2 0 2013-03-16 16:25:19.534
-!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
-user global configuration and to define the default location to store repositories: 'C:\Users\Tim'. If this is
-not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
-EGit might behave differently since they see different configuration options.
-This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
-!SESSION 2013-03-16 16:37:43.154 -----------------------------------------------
-eclipse.buildId=v21.1.0-569685
-java.version=1.7.0_05
-java.vendor=Oracle Corporation
-BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
-Framework arguments:  -product com.android.ide.eclipse.adt.package.product
-Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product com.android.ide.eclipse.adt.package.product
+!ENTRY org.eclipse.ui 4 0 2013-03-19 01:45:41.482
+!MESSAGE Problems occurred restoring workbench.
+!SUBENTRY 1 unknown 0 0 2013-03-19 01:45:41.482
+!MESSAGE OK
+!SUBENTRY 1 unknown 0 0 2013-03-19 01:45:41.482
+!MESSAGE OK
+!SUBENTRY 1 unknown 0 0 2013-03-19 01:45:41.482
+!MESSAGE OK
+!SUBENTRY 1 unknown 0 0 2013-03-19 01:45:41.482
+!MESSAGE OK
+!SUBENTRY 1 org.eclipse.ui 4 0 2013-03-19 01:45:41.482
+!MESSAGE Unable to restore perspective: Workspace - Java.
+!SUBENTRY 2 org.eclipse.ui 0 0 2013-03-19 01:45:41.482
+!MESSAGE Problems occurred restoring perspective.
+!SUBENTRY 3 org.eclipse.ui 0 0 2013-03-19 01:45:41.482
+!MESSAGE 
+!SUBENTRY 2 unknown 0 0 2013-03-19 01:45:41.483
+!MESSAGE OK
+!SUBENTRY 2 unknown 0 0 2013-03-19 01:45:41.483
+!MESSAGE OK
+!SUBENTRY 2 unknown 0 0 2013-03-19 01:45:41.483
+!MESSAGE OK
+!SUBENTRY 2 unknown 0 0 2013-03-19 01:45:41.483
+!MESSAGE OK
+!SUBENTRY 2 unknown 0 0 2013-03-19 01:45:41.483
+!MESSAGE OK
+!SUBENTRY 2 unknown 0 0 2013-03-19 01:45:41.483
+!MESSAGE OK
+!SUBENTRY 2 unknown 0 0 2013-03-19 01:45:41.483
+!MESSAGE OK
+!SUBENTRY 2 unknown 0 0 2013-03-19 01:45:41.483
+!MESSAGE OK
+!SUBENTRY 2 org.eclipse.ui 4 0 2013-03-19 01:45:41.483
+!MESSAGE Could not find view: org.eclipse.ui.internal.introview
+!SUBENTRY 1 unknown 0 0 2013-03-19 01:45:41.483
+!MESSAGE OK
 
-!ENTRY org.eclipse.egit.ui 2 0 2013-03-16 16:38:22.781
-!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
-user global configuration and to define the default location to store repositories: 'C:\Users\Tim'. If this is
-not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
-EGit might behave differently since they see different configuration options.
-This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
-
-!ENTRY com.android.ide.eclipse.adt 2 0 2013-03-16 16:38:23.203
-!MESSAGE Fatal error: No API database found at null
-!SESSION 2013-03-16 17:31:30.556 -----------------------------------------------
-eclipse.buildId=v21.1.0-569685
-java.version=1.7.0_05
-java.vendor=Oracle Corporation
-BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
-Framework arguments:  -product com.android.ide.eclipse.adt.package.product
-Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product com.android.ide.eclipse.adt.package.product
-
-!ENTRY org.eclipse.egit.ui 2 0 2013-03-16 17:31:36.383
-!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
-user global configuration and to define the default location to store repositories: 'C:\Users\Tim'. If this is
-not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
-EGit might behave differently since they see different configuration options.
-This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
-!SESSION 2013-03-16 17:36:58.371 -----------------------------------------------
-eclipse.buildId=v21.1.0-569685
-java.version=1.7.0_05
-java.vendor=Oracle Corporation
-BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
-Framework arguments:  -product com.android.ide.eclipse.adt.package.product
-Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product com.android.ide.eclipse.adt.package.product
-
-!ENTRY org.eclipse.egit.ui 2 0 2013-03-16 17:37:04.188
-!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
-user global configuration and to define the default location to store repositories: 'C:\Users\Tim'. If this is
-not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
-EGit might behave differently since they see different configuration options.
-This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
-!SESSION 2013-03-18 00:06:40.793 -----------------------------------------------
-eclipse.buildId=v21.1.0-569685
-java.version=1.7.0_05
-java.vendor=Oracle Corporation
-BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
-Framework arguments:  -product com.android.ide.eclipse.adt.package.product
-Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product com.android.ide.eclipse.adt.package.product
-
-!ENTRY com.android.ide.eclipse.adt 4 0 2013-03-18 00:06:46.303
-!MESSAGE projectOpenedWithWorkspace: failed to find manifest package for project Aggregator
-
-!ENTRY com.android.ide.eclipse.adt 4 0 2013-03-18 00:06:46.308
-!MESSAGE projectOpenedWithWorkspace: failed to find manifest package for project google-play-services_lib
-
-!ENTRY com.android.ide.eclipse.adt 4 0 2013-03-18 00:06:46.310
-!MESSAGE projectOpenedWithWorkspace: failed to find manifest package for project samplemaps
-
-!ENTRY org.eclipse.egit.ui 2 0 2013-03-18 00:06:47.013
-!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
-user global configuration and to define the default location to store repositories: 'C:\Users\Tim'. If this is
-not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
-EGit might behave differently since they see different configuration options.
-This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
-
-!ENTRY com.android.ide.eclipse.adt 4 0 2013-03-18 00:06:47.440
-!MESSAGE fileChanged: failed to find manifest package for project Aggregator
-
-!ENTRY com.android.ide.eclipse.adt 4 0 2013-03-18 00:06:47.443
-!MESSAGE fileChanged: failed to find manifest package for project Aggregator
-
-!ENTRY com.android.ide.eclipse.adt 4 0 2013-03-18 00:06:49.749
-!MESSAGE fileChanged: failed to find manifest package for project Aggregator
-
-!ENTRY com.android.ide.eclipse.adt 4 0 2013-03-18 00:06:49.751
-!MESSAGE fileChanged: failed to find manifest package for project Aggregator
-
-!ENTRY com.android.ide.eclipse.adt 4 0 2013-03-18 00:06:49.922
-!MESSAGE fileChanged: failed to find manifest package for project samplemaps
-
-!ENTRY com.android.ide.eclipse.adt 4 0 2013-03-18 00:06:49.924
-!MESSAGE fileChanged: failed to find manifest package for project samplemaps
-
-!ENTRY com.android.ide.eclipse.adt 4 0 2013-03-18 00:06:50.104
-!MESSAGE fileChanged: failed to find manifest package for project google-play-services_lib
-
-!ENTRY com.android.ide.eclipse.adt 4 0 2013-03-18 00:06:53.536
-!MESSAGE File is Out of sync
-!STACK 0
-com.android.io.StreamException: org.eclipse.core.internal.resources.ResourceException: Resource is out of sync with the file system: '/Aggregator/AndroidManifest.xml'.
-	at com.android.ide.eclipse.adt.io.IFileWrapper.getContents(IFileWrapper.java:55)
-	at com.android.ide.common.xml.AndroidManifestParser.parse(AndroidManifestParser.java:609)
-	at com.android.ide.eclipse.adt.internal.project.AndroidManifestHelper.parseUnchecked(AndroidManifestHelper.java:75)
-	at com.android.ide.eclipse.adt.internal.build.builders.PreCompilerBuilder.build(PreCompilerBuilder.java:443)
-	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:728)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
-	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
-	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
-	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
-	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
-	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
-Caused by: org.eclipse.core.internal.resources.ResourceException: Resource is out of sync with the file system: '/Aggregator/AndroidManifest.xml'.
-	at org.eclipse.core.internal.localstore.FileSystemResourceManager.read(FileSystemResourceManager.java:793)
-	at org.eclipse.core.internal.resources.File.getContents(File.java:289)
-	at org.eclipse.core.internal.resources.File.getContents(File.java:278)
-	at com.android.ide.eclipse.adt.io.IFileWrapper.getContents(IFileWrapper.java:49)
-	... 15 more
-
-!ENTRY com.android.ide.eclipse.adt 4 0 2013-03-18 00:06:53.818
-!MESSAGE File is Out of sync
-!STACK 0
-com.android.io.StreamException: org.eclipse.core.internal.resources.ResourceException: Resource is out of sync with the file system: '/google-play-services_lib/AndroidManifest.xml'.
-	at com.android.ide.eclipse.adt.io.IFileWrapper.getContents(IFileWrapper.java:55)
-	at com.android.ide.common.xml.AndroidManifestParser.parse(AndroidManifestParser.java:609)
-	at com.android.ide.eclipse.adt.internal.project.AndroidManifestHelper.parseUnchecked(AndroidManifestHelper.java:75)
-	at com.android.ide.eclipse.adt.internal.build.builders.PreCompilerBuilder.build(PreCompilerBuilder.java:443)
-	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:728)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
-	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
-	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
-	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
-	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
-	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
-Caused by: org.eclipse.core.internal.resources.ResourceException: Resource is out of sync with the file system: '/google-play-services_lib/AndroidManifest.xml'.
-	at org.eclipse.core.internal.localstore.FileSystemResourceManager.read(FileSystemResourceManager.java:793)
-	at org.eclipse.core.internal.resources.File.getContents(File.java:289)
-	at org.eclipse.core.internal.resources.File.getContents(File.java:278)
-	at com.android.ide.eclipse.adt.io.IFileWrapper.getContents(IFileWrapper.java:49)
-	... 15 more
-
-!ENTRY com.android.ide.eclipse.adt 4 0 2013-03-18 00:06:53.982
-!MESSAGE File is Out of sync
-!STACK 0
-com.android.io.StreamException: org.eclipse.core.internal.resources.ResourceException: Resource is out of sync with the file system: '/samplemaps/AndroidManifest.xml'.
-	at com.android.ide.eclipse.adt.io.IFileWrapper.getContents(IFileWrapper.java:55)
-	at com.android.ide.common.xml.AndroidManifestParser.parse(AndroidManifestParser.java:609)
-	at com.android.ide.eclipse.adt.internal.project.AndroidManifestHelper.parseUnchecked(AndroidManifestHelper.java:75)
-	at com.android.ide.eclipse.adt.internal.build.builders.PreCompilerBuilder.build(PreCompilerBuilder.java:443)
-	at org.eclipse.core.internal.events.BuildManager$2.run(BuildManager.java:728)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:199)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:239)
-	at org.eclipse.core.internal.events.BuildManager$1.run(BuildManager.java:292)
-	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
-	at org.eclipse.core.internal.events.BuildManager.basicBuild(BuildManager.java:295)
-	at org.eclipse.core.internal.events.BuildManager.basicBuildLoop(BuildManager.java:351)
-	at org.eclipse.core.internal.events.BuildManager.build(BuildManager.java:374)
-	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:143)
-	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:241)
-	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
-Caused by: org.eclipse.core.internal.resources.ResourceException: Resource is out of sync with the file system: '/samplemaps/AndroidManifest.xml'.
-	at org.eclipse.core.internal.localstore.FileSystemResourceManager.read(FileSystemResourceManager.java:793)
-	at org.eclipse.core.internal.resources.File.getContents(File.java:289)
-	at org.eclipse.core.internal.resources.File.getContents(File.java:278)
-	at com.android.ide.eclipse.adt.io.IFileWrapper.getContents(IFileWrapper.java:49)
-	... 15 more
-!SESSION 2013-03-18 00:32:54.295 -----------------------------------------------
-eclipse.buildId=v21.1.0-569685
-java.version=1.7.0_05
-java.vendor=Oracle Corporation
-BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
-Framework arguments:  -product com.android.ide.eclipse.adt.package.product
-Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product com.android.ide.eclipse.adt.package.product
-
-!ENTRY org.eclipse.egit.ui 2 0 2013-03-18 00:33:00.547
+!ENTRY org.eclipse.egit.ui 2 0 2013-03-19 01:45:41.966
 !MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
 user global configuration and to define the default location to store repositories: 'C:\Users\Tim'. If this is
 not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and

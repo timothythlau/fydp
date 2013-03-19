@@ -1,25 +1,2 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="com.google.android.gms.maps.GoogleMap.OnCameraChangeListener"/>
-<fullyQualifiedTypeName name="com.google.android.gms.maps.GoogleMap.InfoWindowAdapter"/>
-<fullyQualifiedTypeName name="android.widget.TextView"/>
-<fullyQualifiedTypeName name="android.text.SpannableString"/>
-<fullyQualifiedTypeName name="android.text.style.ForegroundColorSpan"/>
-<fullyQualifiedTypeName name="android.graphics.Color"/>
-<fullyQualifiedTypeName name="java.util.regex.Pattern"/>
-<fullyQualifiedTypeName name="java.util.regex.Matcher"/>
-<fullyQualifiedTypeName name="android.text.style.StyleSpan"/>
-<fullyQualifiedTypeName name="android.graphics.Typeface"/>
-<fullyQualifiedTypeName name="java.util.HashMap"/>
-<fullyQualifiedTypeName name="java.net.URL"/>
-<fullyQualifiedTypeName name="com.google.android.gms.maps.GoogleMap.OnInfoWindowClickListener"/>
-<fullyQualifiedTypeName name="android.widget.Toast"/>
-<fullyQualifiedTypeName name="java.net.URI"/>
-<fullyQualifiedTypeName name="java.util.Map"/>
-<fullyQualifiedTypeName name="java.util.Map.Entry"/>
-<fullyQualifiedTypeName name="android.util.Log"/>
-<fullyQualifiedTypeName name="com.google.common.collect.HashBiMap"/>
-<fullyQualifiedTypeName name="com.google.android.gms.maps.model.Marker"/>
-<fullyQualifiedTypeName name="java.util.List"/>
-<fullyQualifiedTypeName name="java.util.LinkedList"/>
-</qualifiedTypeNameHistroy>
+<qualifiedTypeNameHistroy/>
