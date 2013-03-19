@@ -43,6 +43,7 @@ public class ListingsListActivity extends ListActivity implements
 	private CursorAdapter mAdapter;
 	private Menu mOptionsMenu;
 	private String mLastSearchPhrase = "";
+	private MyLocation myLocation;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +55,9 @@ public class ListingsListActivity extends ListActivity implements
 //		View footer = getLayoutInflater().inflate(R.layout.listings_footer, null);
 //		getListView().addFooterView(footer);
 
+		myLocation = new MyLocation(this);
+		myLocation.activate(myLocation.listener);
+		
 		// Create empty adapter which will be used by the ListingsCursorLoader
 		mAdapter = new ListingsCursorAdapter(this, null);
 		setListAdapter(mAdapter);
@@ -262,7 +266,8 @@ public class ListingsListActivity extends ListActivity implements
 		updateActionBarTitle();
 		
 		// Get user's last known location		
-		LatLng ll = new MyLocation(this).getLatLng();
+		//LatLng ll = new MyLocation(this).getLatLng();
+		LatLng ll = myLocation.getLatLng();
 		
 		new Query(this, searchPhrase, 0, ll.latitude, ll.longitude, 100000).execute();
 	}

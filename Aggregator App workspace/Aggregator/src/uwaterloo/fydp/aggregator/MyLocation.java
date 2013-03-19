@@ -23,8 +23,8 @@ public class MyLocation implements LocationSource, LocationListener
     public LatLng getLatLng()
     {
     	Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-    	double lat = location.getLatitude();
-    	double lng = location.getLongitude();
+    	Double lat = location.getLatitude();
+    	Double lng = location.getLongitude();
     	return new LatLng(lat,lng);
     }
 
