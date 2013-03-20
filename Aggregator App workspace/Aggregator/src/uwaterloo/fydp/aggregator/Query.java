@@ -133,8 +133,7 @@ public class Query extends AsyncTask<String, Void, Void> {
 		// TODO: Remove maxResults
 		URI uri = new URI(baseUrl 
 				+ "?action=getListings" 
-				+ "&search=" + URLEncoder.encode(mSearchPhrase, "UTF-8") 
-				+ "&cat=" + mCategory 
+				+ "&search=" + URLEncoder.encode(mSearchPhrase, "UTF-8")  
 				+ "&lat=" + mLatitude 
 				+ "&long=" + mLongitude
 				+ "&maxDistance=" + mSearchRadius

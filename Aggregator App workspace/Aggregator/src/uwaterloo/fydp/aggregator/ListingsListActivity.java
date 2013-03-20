@@ -15,8 +15,10 @@ import android.app.LoaderManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.Loader;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.preference.Preference;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -131,10 +133,26 @@ public class ListingsListActivity extends ListActivity implements
 	 * Update the ActionBar title to the search phrase
 	 */
 	private void updateActionBarTitle() {
-		if (mLastSearchPhrase.isEmpty())
-			getActionBar().setTitle(R.string.app_name);
-		else
-			getActionBar().setTitle(mLastSearchPhrase);
+		String actionBarTitle = getResources().getString(R.string.app_name);
+		
+		if (mLastSearchPhrase.isEmpty()) {			
+			SharedPreferences settings = getPreferences(MODE_PRIVATE);
+			String savedLastSearchPhrase = 
+					settings.getString("lastSearchPhrase", "");
+			
+			if (!savedLastSearchPhrase.isEmpty())
+				actionBarTitle = savedLastSearchPhrase;
+		} else {
+			actionBarTitle = mLastSearchPhrase;
+		
+			// Save last search phrase
+			SharedPreferences settings = getPreferences(MODE_PRIVATE);
+			SharedPreferences.Editor editor = settings.edit();
+			editor.putString("lastSearchPhrase", mLastSearchPhrase);
+			editor.commit();
+		}
+		
+		getActionBar().setTitle(actionBarTitle);
 	}
 	
 	/**
